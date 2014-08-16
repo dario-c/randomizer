@@ -1,0 +1,2 @@
+class TippController < ApplicationController
+end
