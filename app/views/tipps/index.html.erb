@@ -1,9 +1,8 @@
-index.html.erb
-
+<h1>Welcome to the randomizer</h1>
 <ul>
   <% @random_choices.each do |tipp| %>
   <li>
-    <%= tipp %>
+    Name: <%= tipp.name %>
   </li>
   <% end %>
 </ul>
