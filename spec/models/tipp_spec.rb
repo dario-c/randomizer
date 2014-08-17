@@ -33,6 +33,13 @@ describe "Random Method" do
   it "Gives 10 Tipps" do
     10.times {FactoryGirl.create(:tipp)}
     expect(Tipp.all.count).to be(10)
+  end  
+
+  it "Tipps are Random" do
+    one = FactoryGirl.create(:tipp)
+    two = FactoryGirl.create(:tipp)
+    
+    expect(one==two).to be(false)
   end
 
 end
