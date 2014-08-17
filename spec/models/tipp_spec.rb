@@ -29,3 +29,11 @@ require 'spec_helper' #rails_helper?
 
 end
 
+describe "Random Method" do
+  it "Gives 10 Tipps" do
+    10.times {FactoryGirl.create(:tipp)}
+    expect(Tipp.all.count).to be(10)
+  end
+
+end
+
