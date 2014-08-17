@@ -7,6 +7,9 @@ require 'faker'
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
+city = City.create(name:"barcelona")
+
 (1..10).each do |x| 
-  Tipp.create(name: Faker::Company.name) 
+  Tipp.create(name: Faker::Company.name, city:city) 
 end
+
