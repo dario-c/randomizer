@@ -1,32 +1,31 @@
-require 'rails_helper'
+require 'spec_helper' #rails_helper?
 
-RSpec.describe "Tipp...", :type => :model do
+# RSpec.describe "Tipp...", :type => :model do
   
-   it "Can be created in the Db" do
-    tipp =       Tipp.new
-    tipp.name =  "Soul Kitchen"
-    tipp.save
-    
-    expect(Tipp.find(tipp.id).id).to eq(Tipp.first.id)
+  describe Tipp do
+
+  it "Has a valid factory" do
+    atipp = FactoryGirl.create(:tipp)
+
+    expect(atipp).to be_truthy
+  end
+
+  it "Can be created in the Db" do
+    atipp = FactoryGirl.create(:tipp)
+
+    expect(atipp.id).to be_truthy
   end
 
   it "Requires a name" do 
-    tipp = Tipp.create
-    
-    expect(tipp.id).to eq(nil)
+    atipp = FactoryGirl.build(:tipp, name: nil)
+    expect(atipp.id).to be_nil
   end
 
   it "Can have a Streetname" do
-    tipp = Tipp.create(name: "Soul Kitchen", streetname: "Elm")
-    
-    expect(tipp.name).to eq("Soul Kitchen")
-    expect(tipp.streetname).to eq("Elm")
+    atipp = FactoryGirl.build(:tipp, streetname:"Elm Street")
+
+    expect(atipp.streetname).to eq("Elm Street")
   end
-  # it "Has at least 10 Tipps" do
-  #   expect(Tipp.count).to eq(10)
-  # end
-
-
 
 end
 
