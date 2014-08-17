@@ -36,8 +36,10 @@ describe "Random Method" do
   end  
 
   it "Tipps are Random" do
-    one = FactoryGirl.create(:tipp)
-    two = FactoryGirl.create(:tipp)
+    10.times {FactoryGirl.create(:tipp)}
+
+    one = Tipp.random_ten
+    two = Tipp.random_ten
     
     expect(one==two).to be(false)
   end
