@@ -30,14 +30,16 @@ require 'spec_helper' #rails_helper?
 end
 
 describe "Random Method" do
-  it "Gives 10 Tipps" do
+
+  before(:each) do 
     10.times {FactoryGirl.create(:tipp)}
+  end
+
+  it "Gives 10 Tipps" do
     expect(Tipp.all.count).to be(10)
   end  
 
   it "Tipps are Random" do
-    10.times {FactoryGirl.create(:tipp)}
-
     one = Tipp.random_ten
     two = Tipp.random_ten
     
