@@ -1,7 +1,7 @@
 class Tipp < ActiveRecord::Base
 
   belongs_to :city
-
+  belongs_to :user
   validates :name, presence: true
 
 
