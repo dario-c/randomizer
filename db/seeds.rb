@@ -13,3 +13,5 @@ city = City.create(name:"barcelona")
   Tipp.create(name: Faker::Company.name, city:city) 
 end
 
+
+User.create(name: "Peter",email: "abc@abc.com", password: "qwerty123", role: "ambassador")
