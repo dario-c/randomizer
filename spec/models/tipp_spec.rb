@@ -5,26 +5,26 @@ require 'spec_helper' #rails_helper?
   describe Tipp do
 
   it "Has a valid factory" do
-    atipp = FactoryGirl.create(:tipp)
+    tipp = FactoryGirl.create(:tipp)
 
-    expect(atipp).to be_truthy
+    expect(tipp).to be_truthy
   end
 
   it "Can be created in the Db" do
-    atipp = FactoryGirl.create(:tipp)
+    tipp = FactoryGirl.create(:tipp)
 
-    expect(atipp.id).to be_truthy
+    expect(tipp.id).to be_truthy
   end
 
   it "Requires a name" do 
-    atipp = FactoryGirl.build(:tipp, name: nil)
-    expect(atipp.id).to be_nil
+    tipp = FactoryGirl.build(:tipp, name: nil)
+    expect(tipp.id).to be_nil
   end
 
   it "Can have a Streetname" do
-    atipp = FactoryGirl.build(:tipp, streetname:"Elm Street")
+    tipp = FactoryGirl.build(:tipp, streetname:"Elm Street")
 
-    expect(atipp.streetname).to eq("Elm Street")
+    expect(tipp.streetname).to eq("Elm Street")
   end
 
 end
