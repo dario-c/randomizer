@@ -13,7 +13,7 @@ RSpec.describe TippsController, :type => :controller do
 
   describe "User Not Logged in" do   
     it "Redirects to log in page" do
-      get :index
+      get :new
       expect(response).to redirect_to(new_user_session_path)
     end
   end

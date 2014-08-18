@@ -1,0 +1,16 @@
+<%= form_for @tipp do |f|%>
+<%= f.label :name %><br />
+<%= f.text_field :name %><br />
+<%= f.label :streetname %><br />
+<%= f.text_field :streetname %><br />
+<%= f.label :user_id %><br />
+<%= f.text_field :user_id %><br />
+<%= f.label :city_id %><br />
+<%= f.text_field :city_id %><br />
+<%= f.submit %>
+<% end %>
+
+<p id="error"><%= flash[:error] %></p>
+
+
+
