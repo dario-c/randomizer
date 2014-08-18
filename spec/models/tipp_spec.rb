@@ -1,13 +1,11 @@
-require 'spec_helper' #rails_helper?
-
-# RSpec.describe "Tipp...", :type => :model do
+require 'rails_helper'
   
-  describe Tipp do
+RSpec.describe Tipp, :type => :model do
 
   it "Has a valid factory" do
-    tipp = FactoryGirl.create(:tipp)
+    tipp = FactoryGirl.build(:tipp)
 
-    expect(tipp).to be_truthy
+    expect(tipp).to be_valid
   end
 
   it "Can be created in the Db" do
@@ -18,7 +16,7 @@ require 'spec_helper' #rails_helper?
 
   it "Requires a name" do 
     tipp = FactoryGirl.build(:tipp, name: nil)
-    expect(tipp.id).to be_nil
+    expect(tipp).to be_invalid
   end
 
   it "Can have a Streetname" do

@@ -3,8 +3,7 @@ class Tipp < ActiveRecord::Base
   belongs_to :city
   belongs_to :user
   validates :name, presence: true
-
-
+  validates :user_id, :city_id, :streetname, presence: true    
 
   def self.random_ten
 
