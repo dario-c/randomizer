@@ -14,4 +14,6 @@ city = City.create(name:"barcelona")
 end
 
 
-User.create(name: "Peter",email: "abc@abc.com", password: "qwerty123", role: "ambassador")
+user = User.create(name: "Peter",email: "abc@abc.com", password: "qwerty123", role: "ambassador")
+
+Comment.create(user_id: user.id, content: "Awesome Place!", tipp_id: Tipp.first.id)
