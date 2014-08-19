@@ -1,8 +1,12 @@
 <h1>Welcome to the randomizer:</h1>
 
-  
+  <% if current_user %>
+    Hi <%= current_user.name%>, welcome again!
+  <% end %>  
+    <br />
+    <br />
     Here: <%= @random_choices[0] %>
-    Here: <%= @random_choices[1] %>
+    
 
 
 <ul>
