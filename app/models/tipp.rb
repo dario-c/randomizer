@@ -20,7 +20,6 @@ class Tipp < ActiveRecord::Base
     @query_of_randoms = Tipp.where({id: [@random_ids]})
   end
 
-
 end
 
 

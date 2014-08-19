@@ -7,6 +7,7 @@ skip_before_filter :authenticate_user!, :only => [:index]
 
   def new
     @tipp = Tipp.new
+    @tipp.comments.build
   end
 
   def create
@@ -24,7 +25,7 @@ skip_before_filter :authenticate_user!, :only => [:index]
 
   private
     def tipp_params 
-      params.require(:tipp).permit(:name, :website, :twitter, :streetname, :user_id, :city_id)
+      params.require(:tipp).permit(:name, :website, :twitter, :streetname, :user_id, :city_id, comments_attributes: [:content])
     end
 end
 

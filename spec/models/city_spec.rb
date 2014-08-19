@@ -8,6 +8,9 @@ RSpec.describe City, :type => :model do
 
     expect(city).to be_valid
     end
+    it "Has Tipps associated to it" do
+      
+    end
   end
 
   describe "Incorrect Data" do 

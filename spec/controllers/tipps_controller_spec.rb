@@ -26,15 +26,20 @@ RSpec.describe TippsController, :type => :controller do
         expect(response).to redirect_to(tipps_path)
       end
 
-     it "is noticed when form is incorrect" do 
-      post :create, tipp: {name:"A Place", streetname:"A Street", user_id: nil, city_id: 1}
-      expect(flash[:error]).to be_truthy
-     end
+      it "can add a comment to the Tipp" do
+        post :create, tipp: {name:"A Place", streetname:"A Street", user_id: 1, city_id: 1, :comments_attributes => { '0'=>{'content'=>"I am a comment!"}}}
+        expect(Comment.last.content).to match("I am a comment!")
+      end
 
-     it "redirected back when form is incorrect" do 
-      post :create, tipp: {name:nil, streetname:"A Street", user_id: 1, city_id: 1}
-      expect(response).to redirect_to(new_tipp_path)
-     end
+      it "is noticed when form is incorrect" do 
+        post :create, tipp: {name:"A Place", streetname:"A Street", user_id: nil, city_id: 1}
+        expect(flash[:error]).to be_truthy
+      end
+
+      it "redirected back when form is incorrect" do 
+        post :create, tipp: {name:nil, streetname:"A Street", user_id: 1, city_id: 1}
+        expect(response).to redirect_to(new_tipp_path)
+      end
 
    end
 

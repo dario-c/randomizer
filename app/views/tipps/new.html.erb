@@ -1,15 +1,25 @@
 <h1>Send us your tipp!</h1>
 
 <%= form_for @tipp do |f|%>
-<%= f.label :name %><br />
-<%= f.text_field :name %><br />
-<%= f.label :streetname %><br />
-<%= f.text_field :streetname %><br />
-<%= f.label :user_id %>
-<%= f.hidden_field :user_id, :value => current_user.id %> +
-<%= f.label :city_id %>
-<%= f.hidden_field :city_id, :value => 1 %><br />
-<%= f.submit %>
+  <%= f.label :name %><br />
+  <%= f.text_field :name %><br />
+  <%= f.label :streetname %><br />
+  <%= f.text_field :streetname %><br />
+  <%= f.label :user_id %>
+  <%= f.hidden_field :user_id, :value => current_user.id %> +
+  <%= f.label :city_id %>
+  <%= f.hidden_field :city_id, :value => 1 %><br />
+  <p>
+  <%= f.fields_for :comments do |comment_form| %>
+     
+      <%= comment_form.label :content %>
+      <br/ >
+      <%= comment_form.text_area :content %>
+  <% end %>
+  </p>
+  
+
+  <%= f.submit %>
 <% end %>
 
 <p id="error"><%= flash[:error] %></p>
