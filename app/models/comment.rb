@@ -1,4 +1,5 @@
 class Comment < ActiveRecord::Base
+  belongs_to :tipp 
 
   validates :content, length: { maximum: 140 } 
 

@@ -1,9 +1,12 @@
 class Tipp < ActiveRecord::Base
-
   belongs_to :city
   belongs_to :user
+  has_many :comments
+
   validates :name, presence: true
   validates :user_id, :city_id, :streetname, presence: true    
+
+  accepts_nested_attributes_for :comments
 
   def self.random_ten
 

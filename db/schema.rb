@@ -23,9 +23,9 @@ ActiveRecord::Schema.define(version: 20140818105252) do
   end
 
   create_table "comments", force: true do |t|
+    t.integer "tipp_id"
     t.text    "content"
     t.integer "user_id"
-    t.integer "tipp_id"
   end
 
   add_index "comments", ["tipp_id"], name: "index_comments_on_tipp_id", using: :btree
