@@ -12,7 +12,7 @@ RSpec.describe Comment, :type => :model do
     end
     
     it "Belongs to a user" do
-      expect(@comment.user_id).to eq(2)
+      expect(@comment.user_id).to eq(1)
     end
 
     it "Belongs to a tipp" do

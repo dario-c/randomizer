@@ -12,7 +12,7 @@ class Comment < ActiveRecord::Base
     
     comment = Comment.last
 
-    if comment.content.empty?
+    if comment.content && comment.content.empty?
       comment.destroy!.save
     end
   end
