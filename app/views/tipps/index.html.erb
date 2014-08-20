@@ -1,6 +1,6 @@
 <h1>Welcome to the randomizer:</h1>
 <p id="error"><%= flash[:notice] %></p>
-
+<%= request.original_url %>
   <% if current_user %>
     Hi <%= current_user.name%>, welcome again!
   <% end %>  

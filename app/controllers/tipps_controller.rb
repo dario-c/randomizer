@@ -13,8 +13,17 @@ skip_before_filter :authenticate_user!, :only => [:index]
   def create
     @keep_name = params[:name]
     @tipp = Tipp.new(tipp_params)
-
+            
     if @tipp.save
+      case User.find(@tipp.user_id).role
+        when "regular"
+          @tipp.points = 10
+        when "ambassador"
+          @tipp.points = 100
+        else
+          @tipp.points = 0
+      end
+
       redirect_to tipps_path, :flash => { :notice => "Thanks for your Tipp!"}
 
     else 
