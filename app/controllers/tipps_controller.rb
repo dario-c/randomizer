@@ -20,8 +20,7 @@ skip_before_filter :authenticate_user!, :only => [:index]
       @errors = @tipp.errors.full_messages
       @error = @tipp.errors[:name]
 
-
-      if @error[0].include?("been taken")
+      if @error[0] && @error[0].include?("been taken")
       redirect_to new_tipp_path, :flash => {:taken => ""} 
 
       else
