@@ -44,6 +44,13 @@ RSpec.describe Tipp, :type => :model do
       expect(tipp).to be_invalid
     end
 
+    it "has the same name as an exisiting one" do
+      tipp = FactoryGirl.create(:tipp, name: "Mob")
+      tipp2 = FactoryGirl.build(:tipp, name: "mob")
+
+      expect(tipp2).to be_invalid
+    end
+
     it "has no streetname" do
       tipp = FactoryGirl.build(:tipp, streetname:nil)
 
