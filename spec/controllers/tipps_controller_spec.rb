@@ -36,6 +36,15 @@ RSpec.describe TippsController, :type => :controller do
         expect(Comment.last.content).to match("I am a comment!")
       end
 
+      it "is notified when the Tipp exists" do
+        @tipp = FactoryGirl.create(:tipp, name:"A Place")
+
+        post :create, tipp: {name:"A Place", streetname:"A Street", user_id: @user.id, city_id: @city.id}
+      
+
+        expect(flash[:taken]).to be_truthy
+      end
+
       it "is noticed when form is incorrect" do 
         post :create, tipp: {name:"A Place", streetname:"A Street", user_id: nil, city_id: @city.id}
         expect(flash[:error]).to be_truthy
