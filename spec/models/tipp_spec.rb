@@ -35,10 +35,10 @@ RSpec.describe Tipp, :type => :model do
     it "belongs to a User" do 
       expect(@tipp.user_id).to eq(1)
     end
-
   end
 
   describe "An invalid Tipp..." do
+
     it "has no name" do 
       tipp = FactoryGirl.build(:tipp, name: nil)
       expect(tipp).to be_invalid
@@ -79,6 +79,5 @@ RSpec.describe Tipp, :type => :model do
       
       expect(one==two).to be(false)
     end
-
   end
 end
