@@ -14,7 +14,7 @@ RSpec.describe TippsController, :type => :controller do
       expect(response).to render_template("index")
     end
     
-    it "is showed the New form" do
+    it "is shown the New form" do
       get :new 
       expect(response).to render_template("new")   
     end
@@ -65,7 +65,4 @@ RSpec.describe TippsController, :type => :controller do
       end   
     end    
   end
-
-#expect(response).to redirect_to(new_user_session_path)
-    
 end  
