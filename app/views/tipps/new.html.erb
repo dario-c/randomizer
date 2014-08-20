@@ -27,6 +27,9 @@
 
 
 <% if flash[:taken]%>
+<%= flash[:name]%>
 Someone already gave us that tip
-Would you like to add a comment?
+Would you like to <%= link_to "add a comment", {:controller => "comments", :action => "new", :tipp_id => "#{flash[:tipp]}"}%>?
 <% end %>
+
+

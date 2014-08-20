@@ -11,24 +11,23 @@ skip_before_filter :authenticate_user!, :only => [:index]
   end
 
   def create
+    @keep_name = params[:name]
     @tipp = Tipp.new(tipp_params)
 
     if @tipp.save
-     
-    redirect_to tipps_path, :flash => { :notice => "Thanks for your Tipp!"}
+      redirect_to tipps_path, :flash => { :notice => "Thanks for your Tipp!"}
+
     else 
       @errors = @tipp.errors.full_messages
       @error = @tipp.errors[:name]
 
       if @error[0] && @error[0].include?("been taken")
-      redirect_to new_tipp_path, :flash => {:taken => ""} 
+        redirect_to new_tipp_path, :flash => {:taken => "",:tipp => @tipp.name} 
 
       else
-      redirect_to new_tipp_path, :flash => { :error => "Sorry, your data doesnt seem to be correct. #{@errors}"}
+      redirect_to new_tipp_path, :flash => { :error => "Sorry, your data doesnt seem to be correct. #{@tipp.name}"}
       end
     end
-
-
   end
 
   private
