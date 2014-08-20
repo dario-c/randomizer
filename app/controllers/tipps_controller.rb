@@ -17,13 +17,14 @@ skip_before_filter :authenticate_user!, :only => [:index]
     if @tipp.save
       case User.find(@tipp.user_id).role
         when "regular"
-          @tipp.points = 10
+          @tipp.update(points:10)
         when "ambassador"
-          @tipp.points = 100
+          @tipp.update(points:100)        
         else
-          @tipp.points = 0
+        
       end
 
+      @tipp.save!
       redirect_to tipps_path, :flash => { :notice => "Thanks for your Tipp!"}
 
     else 
