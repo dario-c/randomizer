@@ -3,10 +3,10 @@
 <%= form_for @comment do |f|%>
   <%= f.label :user_id %>
   <%= f.hidden_field :user_id, :value => current_user.id %> +
-   
+   <% if @tipp %>
   <%= f.label :tipp_id %>
   <%= f.hidden_field :tipp_id, :value => @tipp.id %><br />
-
+  <% end %>
   <%= f.label :content %><br />
   <%= f.text_area :content %><br />
   <%= f.submit %>

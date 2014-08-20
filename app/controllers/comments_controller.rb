@@ -8,7 +8,9 @@ class CommentsController < ApplicationController
   def create
     @comment = Comment.new(comment_params)
     if @comment.save 
-      redirect_to new_tipp_path
+      redirect_to new_tipp_path, :flash => { :notice => "Thanks for your Comment!"}
+    else
+      redirect_to new_tipp_path, :flash => { :comment_error => "sorry, something went wrong"}
     end
   end
 

@@ -5,10 +5,10 @@
   <%= f.text_field :name %><br />
   <%= f.label :streetname %><br />
   <%= f.text_field :streetname %><br />
-  <%= f.label :user_id %>
+  (<%= f.label :user_id %>
   <%= f.hidden_field :user_id, :value => current_user.id %> +
   <%= f.label :city_id %>
-  <%= f.hidden_field :city_id, :value => 1 %><br />
+  <%= f.hidden_field :city_id, :value => 1 %>)<br />
   <p>
   <%= f.fields_for :comments do |comment_form| %>
      
@@ -22,13 +22,17 @@
   <%= f.submit %>
 <% end %>
 
-<p id="error"><%= flash[:error] %></p>
-<p id="error"><%= flash[:taken] %></p>
+<h2 id="error"><%= flash[:error] %></h2>
+<h2 id="error"><%= flash[:taken] %></h2>
+
+<% if flash[:notice]%>
+<h2 id="error"><%= flash[:notice] %></h2>
+Feel free to share more Tipps.
+<% end %>
 
 
 <% if flash[:taken]%>
-<%= flash[:name]%>
-Someone already gave us that tip
+<h2> Someone already gave us that tip</h2>
 Would you like to <%= link_to "add a comment", {:controller => "comments", :action => "new", :tipp_id => "#{flash[:tipp]}"}%>?
 <% end %>
 
