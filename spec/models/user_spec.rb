@@ -51,4 +51,46 @@ RSpec.describe User, :type => :model do
       expect(user).to be_invalid
     end
   end
+
+  describe "An Ambassador" do
+
+    before(:each) do 
+     @user = FactoryGirl.build(:user, role:"regular")  
+    end
+
+    it "receives 2 Karma points when creating a Tipp" do
+      user_before = @user.karma
+      @user.update_karma("created")
+    
+      expect(@user.karma - user_before).to eql(2)
+    end
+
+    it "receives 1 Karma points when commenting a Tipp" do
+      user_before = @user.karma
+      @user.update_karma("commented")
+    
+      expect(@user.karma - user_before).to eql(1)
+    end
+  end
+
+  describe "A Regular user" do
+
+    before(:each) do 
+     @user = FactoryGirl.build(:user, role:"ambassador")  
+    end
+
+    it "receives 2 Karma points when creating a Tipp" do
+      user_before = @user.karma
+      @user.update_karma("created")
+    
+      expect(@user.karma - user_before).to eql(2)
+    end
+
+    it "receives 1 Karma points when commenting a Tipp" do
+      user_before = @user.karma
+      @user.update_karma("commented")
+    
+      expect(@user.karma - user_before).to eql(1)
+    end
+  end
 end

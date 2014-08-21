@@ -4,7 +4,8 @@ class Tipp < ActiveRecord::Base
   has_many :comments
 
   validates :name, presence: true, uniqueness: { case_sensitive: false }
-  validates :user_id, :city_id, :streetname, presence: true    
+  validates :user_id, :city_id, :streetname, :points, presence: true 
+
 
   accepts_nested_attributes_for :comments
 

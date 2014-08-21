@@ -35,6 +35,11 @@ RSpec.describe Tipp, :type => :model do
     it "belongs to a User" do 
       expect(@tipp.user_id).to eq(1)
     end
+
+    it "starts with 0 Points" do
+      expect(@tipp.points).to eq(0)
+    end
+
   end
 
   describe "An invalid Tipp..." do
@@ -85,6 +90,51 @@ RSpec.describe Tipp, :type => :model do
       two = Tipp.random_ten
       
       expect(one==two).to be(false)
+    end
+  end
+
+  describe "Update Points method..." do
+      
+    context 'when the user is a Regular user...' do
+    
+      before(:each) do 
+        @user = FactoryGirl.create(:user, role: "regular")
+        @tipp = FactoryGirl.create(:tipp, user_id: @user.id)
+      end
+
+      it "he creates Tipps with 10 Points " do
+        @tipp.update_points("created", @user.role)
+        expect(@tipp.points).to eq(10)
+      end
+
+      it "he adds 5 Points to Tipps with comments" do
+        pre_update = @tipp.points
+        @tipp.update_points("commented","regular")
+        
+        expect(@tipp.points - pre_update).to eq(5)
+      end
+
+    end
+
+    context 'when the user is an Ambassador...' do
+
+      before(:each) do 
+        @user = FactoryGirl.create(:user, role: "ambassador")
+        @tipp = FactoryGirl.create(:tipp, user_id: @user.id)
+      end
+
+      it "he creates Tipps with 100 Points " do
+        @tipp.update_points("created", @user.role)
+
+        expect(@tipp.points).to eq(100)
+      end
+
+      it "he adds 10 Points to Tipps with comments" do
+        pre_update = @tipp.points
+        @tipp.update_points("commented",@user.role)
+        
+        expect(@tipp.points - pre_update).to eq(10)
+      end
     end
   end
 end
