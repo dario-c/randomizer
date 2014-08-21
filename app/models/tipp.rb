@@ -19,13 +19,24 @@ class Tipp < ActiveRecord::Base
     @query_of_randoms = Tipp.where({id: [@random_ids]})
   end
 
-  def update_points(role)
+  def update_points(action, role)
     new_ammount = 0
+    if action == "created"
+      
+      if role == "regular"
+        new_ammount = 10
+      elsif role == "ambassador"
+        new_ammount = 100
+      end
 
-    if role == "regular"
-      new_ammount = 5
-    elsif role == "ambassador"
-      new_ammount = 10
+    elsif action == "commented"
+      
+      if role == "regular"
+        new_ammount = 5
+      elsif role == "ambassador"
+        new_ammount = 10
+      end
+
     end
 
     self.points += new_ammount
