@@ -27,31 +27,31 @@ RSpec.describe TippsController, :type => :controller do
       end
 
       it "can create a correct Tipp" do
-        post :create, tipp: {name:"A Place", streetname:"A Street", user_id: @user.id, city_id: @city.id}
+        post :create, tipp: {name: "A Place", streetname: "A Street", user_id: @user.id, city_id: @city.id}
         expect(response).to redirect_to(tipps_path)
       end
 
       it "can add a comment to the Tipp" do
-        post :create, tipp: {name:"A Place", streetname:"A Street", user_id: @user.id, city_id: @city.id, :comments_attributes => { '0'=>{'content'=>"I am a comment!"}}}
+        post :create, tipp: {name: "A Place", streetname: "A Street", user_id: @user.id, city_id: @city.id, :comments_attributes => { '0'=>{'content'=>"I am a comment!"}}}
         expect(Comment.last.content).to match("I am a comment!")
       end
 
       it "is notified when the Tipp exists" do
         @tipp = FactoryGirl.create(:tipp, name:"A Place")
 
-        post :create, tipp: {name:"A Place", streetname:"A Street", user_id: @user.id, city_id: @city.id}
+        post :create, tipp: {name: "A Place", streetname: "A Street", user_id: @user.id, city_id: @city.id}
       
 
         expect(flash[:taken]).to be_truthy
       end
 
       it "is noticed when form is incorrect" do 
-        post :create, tipp: {name:"A Place", streetname:"A Street", user_id: nil, city_id: @city.id}
+        post :create, tipp: {name: "A Place", streetname: "A Street", user_id: nil, city_id: @city.id}
         expect(flash[:error]).to be_truthy
       end
 
       it "redirected back when form is incorrect" do 
-        post :create, tipp: {name:nil, streetname:"A Street", user_id: @user.id, city_id: @city.id}
+        post :create, tipp: {name: nil, streetname: "A Street", user_id: @user.id, city_id: @city.id}
         expect(response).to redirect_to(new_tipp_path)
       end
 

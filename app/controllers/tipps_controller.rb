@@ -21,7 +21,6 @@ skip_before_filter :authenticate_user!, :only => [:index]
         when "ambassador"
           @tipp.update(points:100)        
         else
-        
       end
 
       @tipp.save!
