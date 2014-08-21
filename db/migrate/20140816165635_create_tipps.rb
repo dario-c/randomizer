@@ -7,7 +7,7 @@ class CreateTipps < ActiveRecord::Migration
       t.string :streetname
       t.string :website
       t.string :twitter
-      t.integer :points
+      t.integer :points,       default: 0
       t.timestamps
     end
   end

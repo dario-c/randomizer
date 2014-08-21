@@ -38,7 +38,7 @@ ActiveRecord::Schema.define(version: 20140818105252) do
     t.string   "streetname"
     t.string   "website"
     t.string   "twitter"
-    t.integer  "points"
+    t.integer  "points",     default: 0
     t.datetime "created_at"
     t.datetime "updated_at"
   end
