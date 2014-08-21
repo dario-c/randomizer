@@ -19,16 +19,7 @@ skip_before_filter :authenticate_user!, :only => [:index]
       @user = User.find(@tipp.user_id)
       @user.update_karma("created")
       @tipp.update_points("created", @user.role)
-
-      # case @user.role
-      #   when "regular"
-      #     @tipp.update(points:10)
-      #   when "ambassador"
-      #     @tipp.update(points:100)        
-      #   else
-      # end
-
-      # @tipp.save!
+      
       redirect_to tipps_path, :flash => { :notice => "Thanks for your Tipp!"}
 
     else 
