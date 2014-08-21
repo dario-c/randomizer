@@ -15,7 +15,10 @@ skip_before_filter :authenticate_user!, :only => [:index]
     @tipp = Tipp.new(tipp_params)
             
     if @tipp.save
-      case User.find(@tipp.user_id).role
+      @user = User.find(@tipp.user_id)
+      @user.update_karma("created")
+
+      case @user.role
         when "regular"
           @tipp.update(points:10)
         when "ambassador"

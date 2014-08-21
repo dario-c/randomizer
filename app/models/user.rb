@@ -9,6 +9,7 @@ class User < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable
 
 
+#User.find(2).karma
 
 
  def update_karma(action)
@@ -17,7 +18,7 @@ class User < ActiveRecord::Base
    if action == "commented"
      add_ammount = 1
    elsif action == "created"
-     add_ammount = 10
+     add_ammount = 2
    end
 
    self.karma += add_ammount
