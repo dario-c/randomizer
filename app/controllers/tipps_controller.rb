@@ -2,7 +2,7 @@ class TippsController < ApplicationController
 skip_before_filter :authenticate_user!, :only => [:index]
 
   def index
-    @random_choices = Tipp.random_ten
+    @random_choices = Tipp.random_five
   end
 
   def new

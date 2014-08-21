@@ -7,8 +7,23 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
-<%= link_to('Logout', destroy_user_session_path, :method => :delete) %> 
-<%= link_to('new', new_tipp_path, :method => :get) %>  
+  <nav>
+    <ul>
+      <li>
+        <% if user_signed_in? %>
+        <%= link_to('Logout', destroy_user_session_path, :method => :delete) %>
+        <% else %>
+        <%= link_to('Sign in', new_user_session_path) %>
+        <% end %>
+      </li>
+      <li><%= link_to('new', new_tipp_path, :method => :get) %></li> 
+      <li><%= link_to('home', tipps_path) %></li> 
+    <% if current_user %>
+      <li>you are logged in as <%= current_user.name.capitalize %></li>
+    <% end %>
+  </ul>
+  </nav>
+
 <%= yield %>
 
 </body>

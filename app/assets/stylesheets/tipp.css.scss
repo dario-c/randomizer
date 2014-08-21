@@ -1,3 +1,19 @@
 // Place all the styles related to the tipp controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+nav { border: 1px dotted grey;
+  
+  li {  list-style-type:none;
+        text-decoration: none;
+        display:inline-block;
+        margin-left: 50px;
+      }
+  }
+
+article { border: 1px dotted grey;
+          margin: 20px 0;
+          padding: 5px;
+
+
+  }

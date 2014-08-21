@@ -9,15 +9,12 @@ class Tipp < ActiveRecord::Base
 
   accepts_nested_attributes_for :comments
 
-  def self.random_ten
-    @random_count =  []
-    @count =         Tipp.count
+  def self.random_five
 
-    (1..@count).each{|x| @random_count << x }
+    all_tipps = Tipp.all.pluck(:id)
+    random_ids = all_tipps.sample(5)
 
-    @random_ids = @random_count.shuffle!.take(5)
-
-    @query_of_randoms = Tipp.where({id: [@random_ids]})
+    @query_of_randoms = Tipp.where({id: random_ids})
   end
 
   def update_points(action, role)

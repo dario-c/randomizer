@@ -81,13 +81,13 @@ RSpec.describe Tipp, :type => :model do
       10.times {FactoryGirl.create(:tipp)}
     end
 
-    it "Gives 10 Tipps" do
-      expect(Tipp.all.count).to be(10)
+    it "Gives 5 Tipps" do
+      expect(Tipp.random_five.count).to be(5)
     end  
 
     it "Tipps are Random" do
-      one = Tipp.random_ten
-      two = Tipp.random_ten
+      one = Tipp.random_five
+      two = Tipp.random_five
       
       expect(one==two).to be(false)
     end
