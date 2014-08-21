@@ -20,7 +20,6 @@ class Tipp < ActiveRecord::Base
   end
 
   def update_points(role)
-    puts "Tipps points are: #{tipp.points}"
     new_ammount = 0
 
     if role == "regular"
