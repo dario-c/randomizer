@@ -3,9 +3,10 @@ class CommentsController < ApplicationController
   def new
     @tipp = Tipp.find_by(name: params[:tipp_id])
     @comment = Comment.new
-  end
+ end
 
   def create
+
     @comment = Comment.new(comment_params)
     @tipp = Tipp.find(@comment.tipp_id)
     @user = User.find(@comment.user_id)
