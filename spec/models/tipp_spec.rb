@@ -40,6 +40,11 @@ RSpec.describe Tipp, :type => :model do
       expect(@tipp.points).to eq(0)
     end
 
+    it "can have an image associated" do
+      expect(@tipp.image).to be_truthy
+      
+    end
+
   end
 
   describe "An invalid Tipp..." do

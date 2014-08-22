@@ -8,6 +8,7 @@ FactoryGirl.define do
     streetname { Faker::Address.street_name}
     city_id 1
     user_id 1
+    image Faker::Company.logo 
   end
 
 end

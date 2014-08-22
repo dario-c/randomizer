@@ -12,13 +12,13 @@ class Tipp < ActiveRecord::Base
   accepts_nested_attributes_for :comments
   mount_uploader :image, ImageUploader
   
-  def self.random_five_unlogged
-    all_tipps = Tipp.where(offer: true).pluck(:id)
-    @random_ids = all_tipps.sample(5)
-  end
+  def self.random_fives(signed)
+    if signed
+      all_tipps = Tipp.all.pluck(:id)
+    else
+      all_tipps = Tipp.where(offer: true).pluck(:id)
+    end
 
-  def self.random_five_logged
-    all_tipps = Tipp.all.pluck(:id)
     @random_ids = all_tipps.sample(5)
   end
 

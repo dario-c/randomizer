@@ -10,11 +10,12 @@ skip_before_filter :authenticate_user!, :only => [:index]
     @random_choices = Tipp.find_these(cookie)
     
     else
-      user_signed_in? ? option = Tipp.random_five_logged : option = Tipp.random_five_unlogged 
-
-      @random_choices =  option
-      cookies[:choices] = {value: JSON.generate(option),               
+      # user_signed_in? ? option = Tipp.random_five_logged : option = Tipp.random_five_unlogged 
+      # option = Tipp.random_five
+      @random_choices =  Tipp.random_fives(user_signed_in?)
+      cookies[:choices] = {value: JSON.generate(@random_choices),               
                         expires: 2.hours.from_now}
+
       cookie = JSON.parse(cookies[:choices])  
       @random_choices = Tipp.find_these(cookie)
     end
