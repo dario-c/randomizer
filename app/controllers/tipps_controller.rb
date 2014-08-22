@@ -2,17 +2,21 @@ class TippsController < ApplicationController
 skip_before_filter :authenticate_user!, :only => [:index]
 
   def index
+    cookies.delete :choices    
     
-    if cookies[:user]
+    if cookies[:choices]
 
-    @cookie = JSON.parse(cookies[:user])  
-    @random_choices = Tipp.find_these(@cookie)
+    cookie = JSON.parse(cookies[:choices])  
+    @random_choices = Tipp.find_these(cookie)
     
     else
-      cookies[:user] = {value: JSON.generate(Tipp.random_five_ids),               
+      user_signed_in? ? option = Tipp.random_five_logged : option = Tipp.random_five_unlogged 
+
+      @random_choices =  option
+      cookies[:choices] = {value: JSON.generate(option),               
                         expires: 2.hours.from_now}
-      @cookie = JSON.parse(cookies[:user])  
-      @random_choices = Tipp.find_these(@cookie)
+      cookie = JSON.parse(cookies[:choices])  
+      @random_choices = Tipp.find_these(cookie)
     end
 
   end
@@ -20,7 +24,7 @@ skip_before_filter :authenticate_user!, :only => [:index]
   def new
     @tipp = Tipp.new
     @tipp.comments.build
-    cookies.delete :user
+    cookies.delete :choices
   end
 
   def create

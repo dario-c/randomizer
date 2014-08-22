@@ -4,13 +4,19 @@
 <% @cookie.each do |x| %>
   <%= x %>
   <% end%> 
-
-
 <% end %>
 
 
   <% @random_choices.each do |tipp| %>
   <article>
-    <h2> <%= tipp.name %> </h2> (<%= tipp.streetname %>,<%= tipp.city_id %>)
+    <h2> <% if tipp.offer %> Special! @ <% end %> <%= tipp.name %> </h2> 
+
+<ul>
+<li>
+    <%= tipp.streetname %>,<%= tipp.city_id %>
+</li> 
+  <% if tipp.website %><li><%= tipp.website %></li><% end %> 
+  
+</ul>
   </article>
   <% end %>

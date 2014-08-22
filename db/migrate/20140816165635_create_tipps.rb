@@ -8,6 +8,7 @@ class CreateTipps < ActiveRecord::Migration
       t.string :website
       t.string :twitter
       t.integer :points,       default: 0
+      t.boolean :offer,        default: false
       t.timestamps
     end
   end

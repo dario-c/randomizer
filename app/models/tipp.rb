@@ -10,26 +10,21 @@ class Tipp < ActiveRecord::Base
   accepts_nested_attributes_for :comments
 
   
-  def self.random_five_ids
-
-    all_tipps = Tipp.all.pluck(:id)
+  def self.random_five_unlogged
+    all_tipps = Tipp.where(offer: true).pluck(:id)
     @random_ids = all_tipps.sample(5)
   end
 
-  def self.random_five
-
+  def self.random_five_logged
     all_tipps = Tipp.all.pluck(:id)
-    random_ids = all_tipps.sample(5)
-
-    @query_of_randoms = Tipp.where({id: random_ids})
+    @random_ids = all_tipps.sample(5)
   end
 
   def self.find_these(array)
 
     @query_of_randoms = Tipp.where({id: array})
-
-
   end
+
 
   def update_points(action, role)
     new_ammount = 0
@@ -54,6 +49,14 @@ class Tipp < ActiveRecord::Base
     self.points += new_ammount
     self.save!
   end
+
+  def self.random_five
+    all_tipps = Tipp.all.pluck(:id)
+    random_ids = all_tipps.sample(5)
+
+    @query_of_randoms = Tipp.where({id: random_ids})
+  end
+
 end
 
 
