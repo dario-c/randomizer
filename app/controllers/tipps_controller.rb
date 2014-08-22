@@ -24,7 +24,7 @@ skip_before_filter :authenticate_user!, :only => [:index]
   def new
     @tipp = Tipp.new
     @tipp.comments.build
-    cookies.delete :choices
+    # cookies.delete :choices
   end
 
   def create
@@ -54,7 +54,7 @@ skip_before_filter :authenticate_user!, :only => [:index]
 
   private
     def tipp_params 
-      params.require(:tipp).permit(:name, :website, :twitter, :streetname, :user_id, :city_id, comments_attributes: [:content])
+      params.require(:tipp).permit(:name, :website, :twitter, :streetname,:image, :remote_image_url, :user_id, :city_id, comments_attributes: [:content])
     end
 end
 

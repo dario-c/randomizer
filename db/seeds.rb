@@ -15,11 +15,11 @@ user = User.create(name: "peter",email: "abc@abc.com", password: "qwerty123", ro
 user2 = User.create(name: "jane",email: "aaa@aaa.com", password: "qwerty123")
 
 (1..10).each do |x| 
-  Tipp.create(name: Faker::Company.name, city_id: city.id, user_id: user.id, streetname: Faker::Address.street_address, website: Faker::Internet.url) 
+  Tipp.create(name: Faker::Company.name, city_id: city.id, user_id: user.id, streetname: Faker::Address.street_address, website: Faker::Internet.url, remote_image_url: "http://lorempixel.com/1000/800/") 
 end
 
 
-  Tipp.create(name: Faker::Company.name, city_id: city.id, user_id: user.id, streetname: Faker::Address.street_address, offer: true)
+  Tipp.create(name: Faker::Company.name, city_id: city.id, user_id: user.id, streetname: Faker::Address.street_address, offer: true, remote_image_url: "http://lorempixel.com/1000/800/")
 
 
 Comment.create(user_id: user.id, content: "Awesome Place!", tipp_id: Tipp.first.id)

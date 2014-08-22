@@ -8,7 +8,7 @@
 
 
   <% @random_choices.each do |tipp| %>
-  <article>
+  <article style="background-image: url(<%= tipp.image_url if tipp.image? %><%= tipp.remote_image_url if tipp.image? %>)">
     <h2> <% if tipp.offer %> Special! @ <% end %> <%= tipp.name %> </h2> 
 
 <ul>

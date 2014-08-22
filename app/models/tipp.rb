@@ -1,4 +1,6 @@
 class Tipp < ActiveRecord::Base
+  attr_accessor :image, :remote_image_url
+
   belongs_to :city
   belongs_to :user
   has_many :comments
@@ -8,7 +10,7 @@ class Tipp < ActiveRecord::Base
 
 
   accepts_nested_attributes_for :comments
-
+  mount_uploader :image, ImageUploader
   
   def self.random_five_unlogged
     all_tipps = Tipp.where(offer: true).pluck(:id)
