@@ -3,7 +3,7 @@ class CommentsController < ApplicationController
   def new
     @tipp = Tipp.find_by(name: params[:tipp_id])
     @comment = Comment.new
- end
+  end
 
   def create
 

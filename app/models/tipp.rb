@@ -29,29 +29,14 @@ class Tipp < ActiveRecord::Base
   def update_points(action, role)
     new_ammount = 0
 
-    if action == "created"  
-      new_ammount = 10 if role == "regular"
-      new_ammount = 100 if role == "ambassador"
-    
-    elsif action == "commented"  
-      new_ammount = 5 if role == "regular"
-      new_ammount = 10 if role == "ambassador"
-    end
+    points = { created: { regular: 10, ambassador: 100 },
+            commented: { regular: 5, ambassador: 10 }}
+
+    new_ammount = points[action.to_sym][role.to_sym]
 
     self.points += new_ammount
-    self.save!
+    self.save
   end
-
-  #  points = { created: { regular: 10, ambassador: 100 },
-  #           commented: { regular: 5, ambassador: 10 }}
-
-  # def update_points(action, role)
-
-  #   new_ammount = points[action][role]
-
-  #   self.points += new_ammount
-  #   self.save!
-
 end
 
 

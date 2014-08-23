@@ -96,24 +96,23 @@ RSpec.describe Tipp, :type => :model do
       
       expect(one==two).to be(false)
     end
-
-  pending "find_these Method" do
-
-    before(:each) do 
-      10.times {FactoryGirl.create(:tipp)}
-    end
-
-    it "finds those tipps that are asked for" do
-      method = Tipp.find_these([1,3])[1]
-      no_method = Tipp.find(1)
-
-      expect(method.id).to eq(no_method.id)
-    end
-    
   end
 
+  describe "find_these Method" do
 
+    it "finds those tipps that are asked for" do
+      one = FactoryGirl.create(:tipp, id: 1)
+      two = FactoryGirl.create(:tipp, id: 2)
+      three = FactoryGirl.create(:tipp, id: 20)
 
+      method = Tipp.find_these([1,3])[0]
+      method2 = Tipp.find_these([1,20])[1]
+      no_method = Tipp.find(1)
+      no_method2 = Tipp.find(20)
+
+      expect(method.id).to eq(no_method.id)
+      expect(method2.id).to eq(no_method2.id)
+    end
   end
 
   describe "Update Points method..." do
