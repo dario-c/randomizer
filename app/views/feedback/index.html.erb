@@ -1,0 +1,20 @@
+index.html.erb
+
+
+Yay Feedback!
+
+
+<%= form_tag(feedback_index_path, :method => "get") do %>
+  <%= text_field_tag :search, params[:search], placeholder: "Search Tipps" %>
+  <%= submit_tag "Search", :name => nil %>
+<% end %>
+
+
+
+
+<% if @tipps%>
+yay!
+  <h2>
+  <%= @tipps.name %>
+  </h2>
+<% end %>

@@ -1,0 +1,10 @@
+search.html.erb
+
+<%= form_tag(tipps_search_path, :method => "get", id: "search-form") do %>
+  <%= text_field_tag :search, params[:search], placeholder: "Search Tipp" %>
+  <%= submit_tag "Search", :name => nil %>
+<% end %>
+
+<% if @tipp %>
+  @tipp.name
+<% end %>

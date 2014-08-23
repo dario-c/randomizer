@@ -5,6 +5,7 @@ Rails.application.routes.draw do
 
   resources :tipps
   resources :comments, only: [:new, :create]
+  resources :feedback
 
   # You can have the root of your site routed with "root"
   

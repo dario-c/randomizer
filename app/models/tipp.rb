@@ -11,6 +11,11 @@ class Tipp < ActiveRecord::Base
 
   accepts_nested_attributes_for :comments
   mount_uploader :image, ImageUploader
+
+  def self.search(query)
+  where("name like ?", "%#{query}%") 
+  end
+
   
   def self.random_five(signed)
     signed ? all_tipps = Tipp.all.pluck(:id) : all_tipps = Tipp.where(offer: false).pluck(:id)

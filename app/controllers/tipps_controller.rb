@@ -10,9 +10,8 @@ skip_before_filter :authenticate_user!, :only => [:index]
                         expires: 24.hours.from_now}
     end
     cookie = JSON.parse(cookies[:choices])  
-    @random_choices = Tipp.find_these(cookie)
-      
-    end
+    @random_choices = Tipp.find_these(cookie) 
+  end
 
   def new
     @tipp = Tipp.new

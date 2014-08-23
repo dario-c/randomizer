@@ -6,7 +6,6 @@ class CommentsController < ApplicationController
   end
 
   def create
-
     @comment = Comment.new(comment_params)
     @tipp = Tipp.find(@comment.tipp_id)
     @user = User.find(@comment.user_id)
