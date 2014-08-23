@@ -14,7 +14,13 @@ nav { border: 1px dotted grey;
 article { border: 1px dotted grey;
           margin: 20px 0;
           padding: 5px;
-          background-size: 100% auto
+          background-size: 100% auto;
 
+  .textbox { background-color: white;
+              display: inline-block; 
+
+            }
+
+            .comment { float: right}
 
   }
