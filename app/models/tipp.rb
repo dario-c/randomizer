@@ -13,11 +13,8 @@ class Tipp < ActiveRecord::Base
   mount_uploader :image, ImageUploader
   
   def self.random_five(signed)
-    if signed
-      all_tipps = Tipp.all.pluck(:id)
-    else
-      all_tipps = Tipp.where(offer: false).pluck(:id)
-    end
+    signed ? all_tipps = Tipp.all.pluck(:id) : all_tipps = Tipp.where(offer: false).pluck(:id)
+
     @random_ids = all_tipps.sample(5)
   end
 
