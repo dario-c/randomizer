@@ -83,7 +83,8 @@ RSpec.describe Tipp, :type => :model do
   describe "Random Method" do
 
     before(:each) do 
-      10.times {FactoryGirl.create(:tipp)}
+      4.times {FactoryGirl.create(:tipp, offer: false)}
+      6.times {FactoryGirl.create(:tipp, offer: true)}
     end
 
     it "Gives 5 Tipps" do
@@ -96,6 +97,11 @@ RSpec.describe Tipp, :type => :model do
       
       expect(one==two).to be(false)
     end
+
+    it "shows offers only to Signed-in users" do
+      expect(Tipp.random_five(false).count).to be < 5
+    end
+
   end
 
   describe "find_these Method" do

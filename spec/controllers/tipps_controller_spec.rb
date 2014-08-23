@@ -54,10 +54,8 @@ RSpec.describe TippsController, :type => :controller do
         post :create, tipp: {name: nil, streetname: "A Street", user_id: @user.id, city_id: @city.id}
         expect(response).to redirect_to(new_tipp_path)
       end
-
-   end
-
-    end 
+    end
+  end 
 
   describe "If user is not logged in..." do
 
@@ -74,4 +72,11 @@ RSpec.describe TippsController, :type => :controller do
       end   
     end    
   end
+
+  pending "Every user" do
+    it "Sees the same options during the whole day" do
+    end
+    
+  end
+
 end  

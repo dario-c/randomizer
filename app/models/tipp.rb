@@ -16,7 +16,7 @@ class Tipp < ActiveRecord::Base
     if signed
       all_tipps = Tipp.all.pluck(:id)
     else
-      all_tipps = Tipp.where(offer: true).pluck(:id)
+      all_tipps = Tipp.where(offer: false).pluck(:id)
     end
     @random_ids = all_tipps.sample(5)
   end

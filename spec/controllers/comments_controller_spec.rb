@@ -30,9 +30,9 @@ RSpec.describe CommentsController, :type => :controller do
     before(:each) do 
       @tipp = FactoryGirl.create(:tipp)
       @user = FactoryGirl.create(:user, karma: 10)
-      sign_in @user   
+      sign_in @user
+         
       @correct_post = (post :create, comment: {content:"I love their Tacos!", user_id: @user.id, tipp_id: @tipp.id})
-    
     end
 
     it "it can create a correct comment" do
