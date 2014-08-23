@@ -14,6 +14,13 @@ class Comment < ActiveRecord::Base
     end
   end
 
+  def self.random_comment(tipp)
+
+    comments = Comment.where(tipp_id: tipp).sample.content
+
+
+  end
+
   def delete_not_related_comments
 
     # comment = Comment.last

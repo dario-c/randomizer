@@ -9,7 +9,8 @@ skip_before_filter :authenticate_user!, :only => [:index]
     end
     cookie = JSON.parse(cookies[:choices])  
     @random_choices = Tipp.find_these(cookie)
-  end
+      
+    end
 
   def new
     @tipp = Tipp.new

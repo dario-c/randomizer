@@ -35,12 +35,7 @@ RSpec.describe TippsController, :type => :controller do
         post :create, tipp: {name: "A Place", streetname: "A Street", user_id: @user.id, city_id: @city.id, :comments_attributes => { '0'=>{'content'=>"I am a comment!"}}}
         expect(Comment.last.content).to match("I am a comment!")
       end
-
-      it "can add an image to the Tipp" do
-        post :create, tipp: {name: "A Place", streetname: "A Street", user_id: @user.id, city_id: @city.id, :comments_attributes => { '0'=>{'content'=>"I am a comment!"}}}
-        expect(Comment.last.content).to match("I am a comment!")
-      end
-
+      
       it "is notified when the Tipp exists" do
         @tipp = FactoryGirl.create(:tipp, name:"A Place")
 

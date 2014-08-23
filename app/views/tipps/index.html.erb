@@ -9,14 +9,18 @@
 
   <% @random_choices.each do |tipp| %>
   <article style="background-image: url(<%= tipp.image_url if tipp.image? %><%= tipp.remote_image_url if tipp.image? %>)">
-    <h2> <% if tipp.offer %> Special! @ <% end %> <%= tipp.name %> </h2> 
+    <h2><% if tipp.offer %> Special! @ <% end %> <%= tipp.name %> </h2> 
 
 <ul>
 <li>
     <%= tipp.streetname %>,<%= tipp.city_id %>
+    <br />
+    <% if Comment.find_by(tipp_id: tipp.id) %>
+    <%= Comment.random_comment(tipp.id) %>
+    <% end %>
 </li> 
   <% if tipp.website %><li><%= tipp.website %></li><% end %> 
-  
+ 
 </ul>
   </article>
   <% end %>
