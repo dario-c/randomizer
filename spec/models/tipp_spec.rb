@@ -87,15 +87,33 @@ RSpec.describe Tipp, :type => :model do
     end
 
     it "Gives 5 Tipps" do
-      expect(Tipp.random_five.count).to be(5)
+      expect(Tipp.random_five(true).count).to be(5)
     end  
 
     it "Tipps are Random" do
-      one = Tipp.random_five
-      two = Tipp.random_five
+      one = Tipp.random_five(true)
+      two = Tipp.random_five(false)
       
       expect(one==two).to be(false)
     end
+
+  pending "find_these Method" do
+
+    before(:each) do 
+      10.times {FactoryGirl.create(:tipp)}
+    end
+
+    it "finds those tipps that are asked for" do
+      method = Tipp.find_these([1,3])[1]
+      no_method = Tipp.find(1)
+
+      expect(method.id).to eq(no_method.id)
+    end
+    
+  end
+
+
+
   end
 
   describe "Update Points method..." do
@@ -142,4 +160,9 @@ RSpec.describe Tipp, :type => :model do
       end
     end
   end
+
+  describe "W" do
+    
+  end
+
 end

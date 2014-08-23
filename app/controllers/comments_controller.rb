@@ -11,7 +11,7 @@ class CommentsController < ApplicationController
     @tipp = Tipp.find(@comment.tipp_id)
     @user = User.find(@comment.user_id)
 
-    if @comment.save 
+    if @comment.save! 
       @tipp.update_points("commented", @user.role)
       @user.update_karma("commented")
 

@@ -32,7 +32,7 @@ RSpec.describe CommentsController, :type => :controller do
       @user = FactoryGirl.create(:user, karma: 10)
       sign_in @user   
       @correct_post = (post :create, comment: {content:"I love their Tacos!", user_id: @user.id, tipp_id: @tipp.id})
-            # @correct_post
+    
     end
 
     it "it can create a correct comment" do
@@ -41,19 +41,16 @@ RSpec.describe CommentsController, :type => :controller do
     end
 
     it "Notices the user of the success" do
-      # @correct_post
 
       expect(flash[:notice]).to be_truthy
     end
 
     it "relates the comment to a Tipp" do 
-      # @correct_post
 
       expect(Comment.last.tipp_id).to eq(@tipp.id)
     end
     
     it "relates the comment to a User" do 
-      # @correct_post
 
       expect(Comment.last.user_id).to eq(@user.id)
     end
