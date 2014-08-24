@@ -14,7 +14,6 @@ skip_before_filter :authenticate_user!, :only => [:index]
 
   def new
     @tipp = Tipp.new
-    @tipp.comments.build
     cookies.delete :choices
   end
 
@@ -28,8 +27,8 @@ skip_before_filter :authenticate_user!, :only => [:index]
       @user.update_karma("created")
       @tipp.update_points("created", @user.role)
       
-      redirect_to tipps_path, :flash => { :notice => "Thanks for your Tipp!"}
-
+      redirect_to new_tipp_path, :flash => {:addcomment => "",:tipp => @tipp.name} 
+    
     else 
       @errors = @tipp.errors.full_messages
       @error = @tipp.errors[:name]
@@ -45,7 +44,7 @@ skip_before_filter :authenticate_user!, :only => [:index]
 
   private
     def tipp_params 
-      params.require(:tipp).permit(:name, :website, :twitter, :streetname,:image, :remote_image_url, :user_id, :city_id, comments_attributes: [:content])
+      params.require(:tipp).permit(:name, :website, :twitter, :streetname,:image, :remote_image_url, :user_id, :city_id)
     end
 end
 
