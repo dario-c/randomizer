@@ -28,7 +28,8 @@ RSpec.describe CommentsController, :type => :controller do
 
   describe "when creating a correct Comment..." do 
     before(:each) do 
-      @tipp = FactoryGirl.create(:tipp)
+      owner = FactoryGirl.create(:user)
+      @tipp = FactoryGirl.create(:tipp, user_id: owner.id)
       @user = FactoryGirl.create(:user, karma: 10)
       sign_in @user
          

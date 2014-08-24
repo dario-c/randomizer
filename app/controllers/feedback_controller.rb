@@ -24,7 +24,7 @@ class FeedbackController < ApplicationController
       voted.liked_by current_user
 
       if voted.vote_registered?
-        voted.update_points("voted","upvoted") 
+        voted.update_points("upvoted",current_user.role) 
         owner.update_karma("upvoted")
       end
 
@@ -32,7 +32,7 @@ class FeedbackController < ApplicationController
       voted.disliked_by current_user
     
       if voted.vote_registered?
-        voted.update_points("voted", "downvoted")
+        voted.update_points("downvoted", current_user.role)
         owner.update_karma("downvoted")
       end 
       

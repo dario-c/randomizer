@@ -28,12 +28,14 @@ RSpec.describe TippsController, :type => :controller do
 
       it "can create a correct Tipp" do
         post :create, tipp: {name: "A Place", streetname: "A Street", user_id: @user.id, city_id: @city.id}
-        expect(response).to redirect_to(tipps_path)
+       
+        expect(response).to have_http_status(302)
       end
 
-      it "can add a comment to the Tipp" do
-        post :create, tipp: {name: "A Place", streetname: "A Street", user_id: @user.id, city_id: @city.id, :comments_attributes => { '0'=>{'content'=>"I am a comment!"}}}
-        expect(Comment.last.content).to match("I am a comment!")
+      it "is offered to add a comment to the Tipp" do
+        post :create, tipp: {name: "A Place", streetname: "A Street", user_id: @user.id, city_id: @city.id}
+
+        expect(flash[:addcomment]).to be_truthy      
       end
       
       it "is notified when the Tipp exists" do
@@ -72,11 +74,4 @@ RSpec.describe TippsController, :type => :controller do
       end   
     end    
   end
-
-  pending "Every user" do
-    it "Sees the same options during the whole day" do
-    end
-    
-  end
-
 end  

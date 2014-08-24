@@ -10,9 +10,12 @@ class CommentsController < ApplicationController
     @tipp = Tipp.find(@comment.tipp_id)
     @user = User.find(@comment.user_id)
 
+    tipp_owner = User.find(@tipp.user_id)
+
     if @comment.save! 
       @tipp.update_points("commented", @user.role)
       @user.update_karma("commented")
+      tipp_owner.update_karma("vouched")
 
       redirect_to new_tipp_path, :flash => { :notice => "Thanks for your Comment!"}
     else

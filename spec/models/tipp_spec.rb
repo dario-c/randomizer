@@ -142,6 +142,20 @@ RSpec.describe Tipp, :type => :model do
         expect(@tipp.points - pre_update).to eq(5)
       end
 
+      it "he adds 1 Point when up voting" do
+        pre_update = @tipp.points
+        @tipp.update_points("upvoted", @user.role)
+        
+        expect(@tipp.points - pre_update).to eq(1)
+     end
+
+     it "he takes 1 Point when down voting" do
+       pre_update = @tipp.points
+       @tipp.update_points("downvoted", @user.role)
+       
+       expect(@tipp.points - pre_update).to eq(-1)               
+     end
+
     end
 
     context 'when the user is an Ambassador...' do
@@ -163,7 +177,61 @@ RSpec.describe Tipp, :type => :model do
         
         expect(@tipp.points - pre_update).to eq(10)
       end
+
+       it "he adds 1 Point when up voting" do
+         pre_update = @tipp.points
+         @tipp.update_points("upvoted", @user.role)
+         
+         expect(@tipp.points - pre_update).to eq(1)
+      end
+
+      it "he takes 1 Point when down voting" do
+        pre_update = @tipp.points
+        @tipp.update_points("downvoted", @user.role)
+        
+        expect(@tipp.points - pre_update).to eq(-1)         
+      end
     end
+
+    context 'when the user is a Badkarma...' do
+
+      before(:each) do 
+        @user = FactoryGirl.create(:user, role: "badkarma")
+        @tipp = FactoryGirl.create(:tipp, user_id: @user.id)
+      end
+
+      it "he creates Tipps with NO Points " do
+        @tipp.update_points("created", @user.role)
+
+        expect(@tipp.points).to eq(0)
+      end
+
+      it "he adds NO to Tipps with comments" do
+        pre_update = @tipp.points
+        @tipp.update_points("commented",@user.role)
+        
+        expect(@tipp.points - pre_update).to eq(0)
+      end
+
+       it "he adds NO Points when up voting" do
+         pre_update = @tipp.points
+         @tipp.update_points("upvoted", @user.role)
+         
+         expect(@tipp.points - pre_update).to eq(0)
+      end
+
+      it "he takes NO Points when down voting" do
+        pre_update = @tipp.points
+        @tipp.update_points("downvoted", @user.role)
+        
+        expect(@tipp.points - pre_update).to eq(0)
+                
+      end
+
+      
+    end
+
+
   end
 
   describe "W" do

@@ -31,9 +31,11 @@ class Tipp < ActiveRecord::Base
   def update_points(action, role)
     new_ammount = 0
 
-    points = { created: { badkarma: 0, regular: 10, ambassador: 100 },
+
+    points = { created:  { badkarma: 0, regular: 10, ambassador: 100 },
               commented: { badkarma: 0, regular: 5, ambassador: 10 },
-              voted:           {upvoted: 1, downvoted: -1}}
+              upvoted:   { badkarma: 0, regular: 1, ambassador: 1 },
+              downvoted: { badkarma: 0, regular: -1, ambassador: -1 }}
 
     new_ammount = points[action.to_sym][role.to_sym]
     self.points += new_ammount
