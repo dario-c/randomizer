@@ -6,7 +6,7 @@ Rails.application.routes.draw do
   resources :tipps
   resources :comments, only: [:new, :create]
   resources :feedback
-
+  post 'feedback/new' => 'feedback#vote'
   # You can have the root of your site routed with "root"
   
   root 'tipps#index'

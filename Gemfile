@@ -39,6 +39,8 @@ gem 'spring',        group: :development
 
 gem 'carrierwave'
 gem 'devise'
+gem 'acts_as_votable', '~> 0.10.0'
+
 
 group :development, :test do 
   gem 'rspec-rails' 

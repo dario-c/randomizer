@@ -10,12 +10,13 @@
   <% @random_choices.each do |tipp| %>
   <article style="background-image: url(<%= tipp.image_url if tipp.image? %><%= tipp.remote_image_url if tipp.image? %>)">
     <div class='textbox'>
-      <h2><% if tipp.offer %> Special! @ <% end %> <%= tipp.name %> </h2> 
+      <h2><% if tipp.offer %> Special! @ <% end %> 
+        <%= tipp.points %> <%= tipp.name %> </h2> 
     </div>
 <ul>
 
     <div class='textbox'>
-    <%= tipp.streetname %>,<%= tipp.city_id %>
+    <%= tipp.streetname %>
     </div>
  
 

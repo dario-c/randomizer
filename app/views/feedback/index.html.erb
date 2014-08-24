@@ -1,7 +1,5 @@
-index.html.erb
 
-
-Yay Feedback!
+<h1> Search for an Tipp to give feedback: </h1>
 
 
 <%= form_tag(feedback_index_path, :method => "get") do %>
@@ -9,12 +7,26 @@ Yay Feedback!
   <%= submit_tag "Search", :name => nil %>
 <% end %>
 
-
+<% if flash[:notice] %>
+  <%= flash[:notice] %>
+<% end %>
 
 
 <% if @tipps%>
-yay!
   <h2>
-  <%= @tipps.name %>
+  <%= @tipps.name %> <%= @tipps.points %>
+<%= button_to "Up", feedback_new_path(vote: "up",tipp:@tipps.id), :method => "post" %>
+<%= button_to "Down", feedback_new_path(vote: "down",tipp:@tipps.id), :method => "post" %>
+<%= button_to "Tweet", url:"https://twitter.com/share", class:"twitter-share-button" %>
+
   </h2>
 <% end %>
+
+
+<%= flash[:voted] %>
+
+<% if @stuff%>
+  <%= @stuff %>
+<% end %>
+
+

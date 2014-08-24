@@ -8,17 +8,17 @@ class Tipp < ActiveRecord::Base
   validates :name, presence: true, uniqueness: { case_sensitive: false }
   validates :user_id, :city_id, :streetname, :points, presence: true 
 
-
   accepts_nested_attributes_for :comments
   mount_uploader :image, ImageUploader
+  acts_as_votable
 
   def self.search(query)
-  where("name like ?", "%#{query}%") 
+    where("name like ?", "%#{query}%") 
   end
 
   
   def self.random_five(signed)
-    signed ? all_tipps = Tipp.all.pluck(:id) : all_tipps = Tipp.where(offer: false).pluck(:id)
+    signed ? all_tipps = Tipp.where("points > ?", 0).pluck(:id) : all_tipps = Tipp.where("points > ? AND offer = ?", 0, false).pluck(:id)
 
     @random_ids = all_tipps.sample(5)
   end
@@ -31,8 +31,9 @@ class Tipp < ActiveRecord::Base
   def update_points(action, role)
     new_ammount = 0
 
-    points = { created: { regular: 10, ambassador: 100 },
-            commented: { regular: 5, ambassador: 10 }}
+    points = { created: { badkarma: 0, regular: 10, ambassador: 100 },
+              commented: { badkarma: 0, regular: 5, ambassador: 10 },
+              voted:           {up: 1, down: -1}}
 
     new_ammount = points[action.to_sym][role.to_sym]
 
