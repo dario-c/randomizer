@@ -35,7 +35,7 @@ skip_before_filter :authenticate_user!, :only => [:index]
         redirect_to new_tipp_path, :flash => {:taken => "", :tipp => @tipp.name} 
 
       else
-      redirect_to new_tipp_path, :flash => { :error => "Sorry, your data doesnt seem to be correct. #{@tipp.name}"}
+      redirect_to new_tipp_path, :flash => { :error => "Sorry, your data doesnt seem to be correct."}
       end
     end
   end

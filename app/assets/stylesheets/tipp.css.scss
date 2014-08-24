@@ -13,7 +13,7 @@ nav { border: 1px dotted grey;
 
     }
   }
-  .sign { color: red; 
+  .sign { 
           float:right;
   }
         
@@ -27,14 +27,19 @@ article { border: 1px dotted grey;
           padding: 5px;
           background-size: 100% auto;
           height: 300px;
+          font-size: 1.5em;
 
   .textbox { background-color: white;
              display: inline-block;
              margin-bottom: 30px;
              float: left; 
              clear: both;
-            }
+            
 
-            .comment { float: right}
+    .comment { float: right };
 
+    a { text-decoration :none;
+        color: black };
   }
+}
+  
