@@ -2,9 +2,10 @@ class Comment < ActiveRecord::Base
   belongs_to :tipp 
   belongs_to :user
 
-  validates :content, length: { maximum: 140 } 
+  validates :content, length: { in: 4..140, wrong_length: "Please type a comment in between 4 and 140 words" } 
+  validates :user_id, :tipp_id, presence:true
 
-  after_create :delete_empty_comments, :delete_not_related_comments
+  # after_create :delete_empty_comments, :delete_not_related_comments, 
 
   private
 

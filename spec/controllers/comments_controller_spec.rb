@@ -62,14 +62,12 @@ RSpec.describe CommentsController, :type => :controller do
     before(:each) do 
       @tipp = FactoryGirl.create(:tipp)
       @user = FactoryGirl.create(:user)
-      sign_in @user   
+      # sign_in @user   
     end
+  pending "Notifies about error and redirects accordinly" do
+      subject { post :create, comment: { content:"a", user_id: @user.id, tipp_id: @tipp.id }}
 
-    pending "Notifies about error and redirects accordinly" do
-      post :create, comment: {content:"I love their Tacos!", user_id: @user.id, tipp_id: nil} 
-
-      expect(flash[:comment_error]).to be_truthy
-      expect(response).to redirect_to(new_tipp_path)         
+      expect(subject).to render_template("new")         
     end
   end
 end
