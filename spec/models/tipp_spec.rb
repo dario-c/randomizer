@@ -83,25 +83,35 @@ RSpec.describe Tipp, :type => :model do
   describe "Random Method" do
 
     before(:each) do 
-      4.times {FactoryGirl.create(:tipp, offer: false, points: 10)}
-      6.times {FactoryGirl.create(:tipp, offer: true, points: 10)}
-    end
+      end
 
     it "Gives 5 Tipps" do
+      10.times { FactoryGirl.create(:tipp, offer: false, points: 10) }
+   
       expect(Tipp.random_five(true).count).to be(5)
     end  
 
     it "Tipps are Random" do
-      one = Tipp.random_five(true)
+      10.times { FactoryGirl.create(:tipp, offer: false, points: 10) }
+
+      one = Tipp.random_five(false)
       two = Tipp.random_five(false)
       
       expect(one==two).to be(false)
     end
 
     it "shows offers only to Signed-in users" do
+      4.times { FactoryGirl.create(:tipp, offer: false, points: 10) }
+      6.times { FactoryGirl.create(:tipp, offer: true, points: 10) }
+      
       expect(Tipp.random_five(false).count).to be < 5
     end
-
+    it "shows only those with Positive Points" do
+      4.times { FactoryGirl.create(:tipp, offer: true, points: 10) }
+      6.times { FactoryGirl.create(:tipp, offer: true, points: -10) }
+      
+      expect(Tipp.random_five(true).count).to be < 5
+    end
   end
 
   describe "find_these Method" do
@@ -144,14 +154,14 @@ RSpec.describe Tipp, :type => :model do
 
       it "he adds 1 Point when up voting" do
         pre_update = @tipp.points
-        @tipp.update_points("upvoted", @user.role)
+        @tipp.update_points("was_upvoted", @user.role)
         
         expect(@tipp.points - pre_update).to eq(1)
      end
 
      it "he takes 1 Point when down voting" do
        pre_update = @tipp.points
-       @tipp.update_points("downvoted", @user.role)
+       @tipp.update_points("was_downvoted", @user.role)
        
        expect(@tipp.points - pre_update).to eq(-1)               
      end
@@ -180,14 +190,14 @@ RSpec.describe Tipp, :type => :model do
 
        it "he adds 1 Point when up voting" do
          pre_update = @tipp.points
-         @tipp.update_points("upvoted", @user.role)
+         @tipp.update_points("was_upvoted", @user.role)
          
          expect(@tipp.points - pre_update).to eq(1)
       end
 
       it "he takes 1 Point when down voting" do
         pre_update = @tipp.points
-        @tipp.update_points("downvoted", @user.role)
+        @tipp.update_points("was_downvoted", @user.role)
         
         expect(@tipp.points - pre_update).to eq(-1)         
       end
@@ -215,14 +225,14 @@ RSpec.describe Tipp, :type => :model do
 
        it "he adds NO Points when up voting" do
          pre_update = @tipp.points
-         @tipp.update_points("upvoted", @user.role)
+         @tipp.update_points("was_upvoted", @user.role)
          
          expect(@tipp.points - pre_update).to eq(0)
       end
 
       it "he takes NO Points when down voting" do
         pre_update = @tipp.points
-        @tipp.update_points("downvoted", @user.role)
+        @tipp.update_points("was_downvoted", @user.role)
         
         expect(@tipp.points - pre_update).to eq(0)
                 

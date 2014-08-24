@@ -24,16 +24,16 @@ class FeedbackController < ApplicationController
       voted.liked_by current_user
 
       if voted.vote_registered?
-        voted.update_points("upvoted",current_user.role) 
-        owner.update_karma("upvoted")
+        voted.update_points("was_upvoted",current_user.role) 
+        owner.update_karma("was_upvoted")
       end
 
     elsif vote == "down"  
       voted.disliked_by current_user
     
       if voted.vote_registered?
-        voted.update_points("downvoted", current_user.role)
-        owner.update_karma("downvoted")
+        voted.update_points("was_downvoted", current_user.role)
+        owner.update_karma("was_downvoted")
       end 
       
       flash[:voted]="Achtung!"  if  voted.points <= 0

@@ -10,25 +10,25 @@ class User < ActiveRecord::Base
   acts_as_voter
 
   def update_karma(action)
-     add_ammount = 0
+    add_ammount = 0
      
-     unless self.role == "badkarma"  
+    unless self.role == "badkarma"  
       if action == "commented"
          add_ammount = 1
       elsif action == "created"
          add_ammount = 2
-      elsif action == "upvoted"
+      elsif action == "was_upvoted"
         add_ammount = 1  
-      elsif action == "downvoted"
+      elsif action == "was_downvoted"
         add_ammount = -1
       end
     end
 
-    add_ammount = 1 if action == "vouched"  
+    add_ammount = 1 if action == "vouched_for"  
 
      self.karma += add_ammount
      self.update_role
-     self.save!
+     self.save
   end
 
   def update_role

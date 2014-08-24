@@ -74,21 +74,21 @@ RSpec.describe User, :type => :model do
 
     it "receives 1 Karma points when someone up votes his Tipp" do
       user_before = @user.karma
-      @user.update_karma("upvoted")
+      @user.update_karma("was_upvoted")
     
       expect(@user.karma - user_before).to eql(1)
     end
     
     it "loses 1 Karma points when someone down votes his Tipp" do
       user_before = @user.karma
-      @user.update_karma("downvoted")
+      @user.update_karma("was_downvoted")
     
       expect(@user.karma - user_before).to eql(-1)
     end
 
     it "receives 1 Karma Point when another user comments on his Tipp" do
       user_before = @user.karma
-      @user.update_karma("vouched")
+      @user.update_karma("vouched_for")
     
       expect(@user.karma - user_before).to eql(1)
     end
@@ -118,21 +118,21 @@ RSpec.describe User, :type => :model do
 
     it "receives 1 Karma points when someone up votes his Tipp" do
       user_before = @user.karma
-      @user.update_karma("upvoted")
+      @user.update_karma("was_upvoted")
     
       expect(@user.karma - user_before).to eql(1)
     end
 
     it "loses 1 Karma points when someone down votes his Tipp" do
       user_before = @user.karma
-      @user.update_karma("downvoted")
+      @user.update_karma("was_downvoted")
     
       expect(@user.karma - user_before).to eql(-1)
     end  
 
     it "receives 1 Karma Point when another user comments on his Tipp" do
       user_before = @user.karma
-      @user.update_karma("vouched")
+      @user.update_karma("vouched_for")
     
       expect(@user.karma - user_before).to eql(1)
     end
@@ -161,25 +161,50 @@ RSpec.describe User, :type => :model do
 
     it "does not receive Karma when someone up votes his Tipp" do
       user_before = @user.karma
-      @user.update_karma("upvoted")
+      @user.update_karma("was_upvoted")
     
       expect(@user.karma - user_before).to eql(0)
     end
     
     it "does not receive Karma  when someone up votes his Tipp" do
       user_before = @user.karma
-      @user.update_karma("downvoted")
+      @user.update_karma("was_downvoted")
     
       expect(@user.karma - user_before).to eql(0)
     end
     
     it "receives 1 Karma Point ONLY when another user comments on his Tipp" do
       user_before = @user.karma
-      @user.update_karma("vouched")
+      @user.update_karma("vouched_for")
     
       expect(@user.karma - user_before).to eql(1)
     end
 
   end
 
+  describe "All users" do
+
+    it "turn into Ambassadors if their Karma reaches 100" do
+        user = FactoryGirl.build(:user, karma: 99)
+        expect(user.role).to eql("regular") 
+
+        user.update_karma("created")
+        expect(user.role).to eql("ambassador") 
+    end
+
+    it "are Regular if their Karma is in between 0 and 100" do
+
+      
+    end
+
+    it "are Badkarmas if their Karma drops under 0" do
+     
+      user = FactoryGirl.build(:user, karma: 0)
+      expect(user.role).to eql("regular") 
+
+      user.update_karma("was_downvoted")
+      expect(user.role).to eql("badkarma") 
+
+    end
+  end
 end
