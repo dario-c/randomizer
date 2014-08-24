@@ -4,21 +4,35 @@
 
 nav { border: 1px dotted grey;
   
-  li {  list-style-type:none;
-        text-decoration: none;
-        display:inline-block;
-        margin-left: 50px;
-      }
+  ul {
+  
+    li {  list-style-type:none;
+            text-decoration: none;
+            display:inline-block;
+            margin-left: 50px;
+
+    }
   }
+  .sign { color: red; 
+          float:right;
+  }
+        
+}
+
+
+
 
 article { border: 1px dotted grey;
           margin: 20px 0;
           padding: 5px;
           background-size: 100% auto;
+          height: 300px;
 
   .textbox { background-color: white;
-              display: inline-block; 
-
+             display: inline-block;
+             margin-bottom: 30px;
+             float: left; 
+             clear: both;
             }
 
             .comment { float: right}

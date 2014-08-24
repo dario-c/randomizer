@@ -9,20 +9,32 @@
 <body>
   <nav>
     <ul>
+      <li><%= link_to('home', tipps_path) %></li>
+      
+      <li><%= link_to('Feedback', feedback_index_path, :method => :get) %></li> 
+      <li><%= link_to('new', new_tipp_path, :method => :get) %></li> 
+  
+
+    <span class="sign">  
       <li>
-        <% if user_signed_in? %>
-        <%= link_to('Logout', destroy_user_session_path, :method => :delete) %>
+        <% if current_user %>
+      Hello <%= current_user.name.capitalize %>, you are signed in
         <% else %>
-        <%= link_to('Sign in', new_user_session_path) %>
+      you are not signed in  
         <% end %>
       </li>
-      <li><%= link_to('new', new_tipp_path, :method => :get) %></li> 
-      <li><%= link_to('home', tipps_path) %></li> 
-    <% if current_user %>
-      <li>you are logged in as <%= current_user.name.capitalize %></li>
-    <% end %>
-  </ul>
-
+      
+        <% if user_signed_in? %>
+        <li> <%= link_to('Logout', destroy_user_session_path, :method => :delete) %> </li>
+        
+        <% else %>
+          <li> <%= link_to('Sign in', new_user_session_path) %> </li>
+          <li> <%= link_to('Sign up', new_user_registration_path) %> </li>
+        <% end %>
+      
+      </span>
+    </ul>
+    
   </nav>
 
 <%= yield %>

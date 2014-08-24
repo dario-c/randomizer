@@ -3,25 +3,25 @@
 
 
   <% @random_choices.each do |tipp| %>
-  <article style="background-image: url(<%= tipp.image_url if tipp.image? %><%= tipp.remote_image_url if tipp.image? %>)">
-    <div class='textbox'>
-      <h2><% if tipp.offer %> Special! @ <% end %> 
-        <%= tipp.points %> <%= tipp.name %> </h2> 
-    </div>
-<ul>
 
-    <div class='textbox'>
-    <%= tipp.streetname %>
-    </div>
- 
+    <article style="background-image: url(<%= tipp.image_url if tipp.image? %><%= tipp.remote_image_url if tipp.image? %>)">
+     
+      <div class='textbox'>
+          <h2>  <% if tipp.offer %> Special! <% end %> <%= tipp.name %> </h2> 
+      </div>
 
-<% if Comment.find_by(tipp_id: tipp.id) %>
-    <div class='textbox comment'>   
-    <%= Comment.random_comment(tipp.id) %>
-    </div>
-    <% end %>
-  <% if tipp.website %><div class='textbox'><%= tipp.website %></div><% end %> 
- 
-</ul>
-  </article>
+      <div class='textbox'>
+        <%= tipp.streetname %>
+      </div>
+   
+
+      <% if Comment.find_by(tipp_id: tipp.id) %>
+        <div class='textbox comment'>   
+          <%= Comment.random_comment(tipp.id) %>
+        </div>
+      <% end %>
+      
+      <% if tipp.website %><div class='textbox'><%= tipp.website %></div><% end %> 
+   
+    </article>
   <% end %>
