@@ -16,6 +16,8 @@ class User < ActiveRecord::Base
        add_ammount = 1
     elsif action == "created"
        add_ammount = 2
+    elsif action == "upvoted"
+      add_ammount = 1  
     elsif action == "downvoted"
       add_ammount = -5
     end
@@ -23,7 +25,6 @@ class User < ActiveRecord::Base
      self.karma += add_ammount
      self.update_role
      self.save!
-
   end
 
   def update_role

@@ -14,7 +14,7 @@ user = User.create(name: "peter",email: "abc@abc.com", password: "qwerty123", ro
 
 user2 = User.create(name: "jane",email: "aaa@aaa.com", password: "qwerty123")
 
-smelly = User.create(name: "smelly",email: "zzz@zzz.com", password: "qwerty123", role: "badkarma")
+smelly = User.create(name: "smelly",email: "zzz@zzz.com", password: "qwerty123",role: "badkarma", karma:-10)
 
 (1..10).each do |x| 
   Tipp.create(name: Faker::Company.name, city_id: city.id, user_id: user.id, streetname: Faker::Address.street_address, website: Faker::Internet.url, points: 10, remote_image_url: "http://lorempixel.com/1000/800/") 

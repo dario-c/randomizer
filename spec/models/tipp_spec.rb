@@ -83,8 +83,8 @@ RSpec.describe Tipp, :type => :model do
   describe "Random Method" do
 
     before(:each) do 
-      4.times {FactoryGirl.create(:tipp, offer: false)}
-      6.times {FactoryGirl.create(:tipp, offer: true)}
+      4.times {FactoryGirl.create(:tipp, offer: false, points: 10)}
+      6.times {FactoryGirl.create(:tipp, offer: true, points: 10)}
     end
 
     it "Gives 5 Tipps" do

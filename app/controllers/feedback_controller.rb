@@ -18,14 +18,24 @@ class FeedbackController < ApplicationController
     vote = params[:vote]
     tipp = params[:tipp]
     voted = Tipp.find(tipp)
-
+    owner = User.find(voted.user_id)
 
     if vote == "up"
       voted.liked_by current_user
-      voted.update_points("voted","up") if voted.vote_registered?
-    elsif vote == "down"
+
+      if voted.vote_registered?
+        voted.update_points("voted","upvoted") 
+        owner.update_karma("upvoted")
+      end
+
+    elsif vote == "down"  
       voted.disliked_by current_user
-      voted.update_points("voted", "down") if voted.vote_registered?
+    
+      if voted.vote_registered?
+        voted.update_points("voted", "downvoted")
+        owner.update_karma("downvoted")
+      end 
+      
       flash[:voted]="Achtung!"  if  voted.points <= 0
 
     end
