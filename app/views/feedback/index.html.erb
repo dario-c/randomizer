@@ -25,7 +25,7 @@
 <%= button_to "Up", feedback_new_path(vote: "up",tipp:@tipps.id), :method => "post" %>
 <%= button_to "Down", feedback_new_path(vote: "down",tipp:@tipps.id), :method => "post" %>
 
-<a href="https://twitter.com/share" data-text="I just discoverd something new in <%= @tipps.city.name%>: <%= @tipps.name%> #randomizer #barcelona" data-url="www.randomizer.com" data-related="@kind_of_Ruby" <%if @tipps.twitter %> <%=tipps.twitter %> <% end %> class="twitter-share-button" data-lang="en" data-count="none" > Tweet </a>
+<a href="https://twitter.com/share" data-text="I just discoverd something new in <%= @tipps.city.name%>: <%= @tipps.name%> #randomizer #barcelona" data-url="www.randomizer.com" data-related="@kind_of_Ruby" <%if @tipps.twitter %> <%=@tipps.twitter %> <% end %> class="twitter-share-button" data-lang="en" data-count="none" > Tweet </a>
 
   </h2>
 <% end %>
