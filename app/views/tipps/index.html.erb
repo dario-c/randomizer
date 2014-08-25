@@ -14,10 +14,9 @@
         <%= tipp.streetname %>
       </div>
    
-
-      <% if Comment.find_by(tipp_id: tipp.id) %>
+      <% if tipp.comments.count > 0 %>
         <div class='textbox comment'>   
-          <%= Comment.random_comment(tipp.id) %>
+          <%= tipp.random_comment.content %>
         </div>
       <% end %>
       

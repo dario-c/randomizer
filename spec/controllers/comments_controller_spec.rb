@@ -60,14 +60,16 @@ RSpec.describe CommentsController, :type => :controller do
   describe "when creating an Incorrect Comment..." do 
     
     before(:each) do 
-      @tipp = FactoryGirl.create(:tipp)
       @user = FactoryGirl.create(:user)
+      @tipp = FactoryGirl.create(:tipp, user: @user)
       # sign_in @user   
     end
   pending "Notifies about error and redirects accordinly" do
-      subject { post :create, comment: { content:"a", user_id: @user.id, tipp_id: @tipp.id }}
+    sign_in @user 
+    post :create, comment: { content:"a", user: @user, tipp: @tipp }
 
-      expect(subject).to render_template("new")         
+
+      expect(response).to redirect_to(new_tipp_path)         
     end
   end
 end

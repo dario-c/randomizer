@@ -40,6 +40,24 @@ skip_before_filter :authenticate_user!, :only => [:index]
     end
   end
 
+  def check 
+
+    name = params[:name]
+    tipp = Tipp.where(name: name)
+
+   
+    respond_to do |format|
+      if tipp.count > 0
+        format.json { render json: tipp.first }
+    
+      else 
+        format.json { render json: { found: false }}
+      end
+    end
+
+  end
+
+
   private
     def tipp_params 
       params.require(:tipp).permit(:name, :website, :twitter, :streetname,:image, :remote_image_url, :user_id, :city_id)

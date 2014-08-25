@@ -2,8 +2,10 @@
 
 <%= form_for @tipp, :html => {multiparts: true} do |f|%>
   <div>
+  
   <%= f.label :name %><br />
-  <%= f.text_field :name %><br />
+  <%= f.text_field :name, :autofocus => true, :id => "tipp_name" %><br />
+
   <%= f.label :streetname,"Address" %><br />
   <%= f.text_field :streetname %><br />
   <%= f.label :website %><br />
@@ -42,3 +44,4 @@ Would you like to <%= link_to "add a comment", {:controller => "comments", :acti
 <% end %>
 
 
+<script> App.checkDuplicated() </script>

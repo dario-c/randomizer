@@ -12,15 +12,15 @@ class User < ActiveRecord::Base
   def update_karma(action)
     add_ammount = 0
      
-    unless self.role == "badkarma"  
-      if action == "commented"
-         add_ammount = 1
-      elsif action == "created"
-         add_ammount = 2
-      elsif action == "was_upvoted"
-        add_ammount = 1  
-      elsif action == "was_downvoted"
-        add_ammount = -1
+
+    unless self.role == "badkarma"
+      add_ammount = case action
+        when "commented", "was_upvoted" then
+          1
+        when "created" then
+          2
+        when "was_downvoted" then
+          -1
       end
     end
 

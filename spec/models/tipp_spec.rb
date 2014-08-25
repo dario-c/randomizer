@@ -106,6 +106,7 @@ RSpec.describe Tipp, :type => :model do
       
       expect(Tipp.random_five(false).count).to be < 5
     end
+
     it "shows only those with Positive Points" do
       4.times { FactoryGirl.create(:tipp, offer: true, points: 10) }
       6.times { FactoryGirl.create(:tipp, offer: true, points: -10) }
@@ -146,10 +147,8 @@ RSpec.describe Tipp, :type => :model do
       end
 
       it "he adds 5 Points to Tipps with comments" do
-        pre_update = @tipp.points
-        @tipp.update_points("commented","regular")
-        
-        expect(@tipp.points - pre_update).to eq(5)
+        expect { @tipp.update_points("commented","regular")
+                }.to change(@tipp, :points).by(5)
       end
 
       it "he adds 1 Point when up voting" do

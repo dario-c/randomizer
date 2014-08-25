@@ -20,11 +20,11 @@ class Tipp < ActiveRecord::Base
   def self.random_five(signed)
     signed ? all_tipps = Tipp.where("points > ?", 0).pluck(:id) : all_tipps = Tipp.where("points > ? AND offer = ?", 0, false).pluck(:id)
 
-    @random_ids = all_tipps.sample(5)
+    all_tipps.sample(5)
   end
 
   def self.find_these(array)
-    @query_of_randoms = Tipp.where({id: array})
+    Tipp.where({id: array})
   end
 
 
@@ -34,13 +34,24 @@ class Tipp < ActiveRecord::Base
 
     points = { created:  { badkarma: 0, regular: 10, ambassador: 100 },
               commented: { badkarma: 0, regular: 5, ambassador: 10 },
-              was_upvoted:   { badkarma: 0, regular: 1, ambassador: 1 },
+              was_upvoted:  { badkarma: 0, regular: 1, ambassador: 1 },
               was_downvoted: { badkarma: 0, regular: -1, ambassador: -1 }}
 
     new_ammount = points[action.to_sym][role.to_sym]
     self.points += new_ammount
     self.save
   end
+
+  def random_comment
+
+    Comment.random_comment(self.id)
+
+  end
+
+
+
+
+
 end
 
 
