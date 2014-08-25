@@ -4,12 +4,15 @@
   <div>
   
   <%= f.label :name %><br />
-  <%= f.text_field :name, :autofocus => true, :id => "tipp_name" %><br />
+  <%= f.text_field :name, :autofocus => true, :required => true, :id => "tipp_name" %><br />
 
   <%= f.label :streetname,"Address" %><br />
-  <%= f.text_field :streetname %><br />
+  <%= f.text_field :streetname, :required => true %><br />
   <%= f.label :website %><br />
-  <%= f.text_field :website %><br />
+  <%= f.text_field :website, :type => "url" %><br /> 
+
+  <%= f.label :twitter %><br />
+  <%= f.text_field :twitter, :placeholder => "twitter name" %><br />
   </div>
   <div>
   <%= f.label "Upload an Image" %><br />
