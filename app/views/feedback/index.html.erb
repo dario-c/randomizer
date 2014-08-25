@@ -7,8 +7,15 @@
   <%= submit_tag "Search", :name => nil %>
 <% end %>
 
-<% if flash[:notice] %>
-  <%= flash[:notice] %>
+<% if flash[:notice] && @alltipps %>
+  <%= flash[:notice] %> 
+    
+
+    Do you mean...
+    <% @alltipps.each do |x| %>
+    <%=  x.name %>
+    <% end %>
+
 <% end %>
 
 
@@ -17,7 +24,8 @@
   <%= @tipps.name %> <%= @tipps.points %>
 <%= button_to "Up", feedback_new_path(vote: "up",tipp:@tipps.id), :method => "post" %>
 <%= button_to "Down", feedback_new_path(vote: "down",tipp:@tipps.id), :method => "post" %>
-<%= button_to "Tweet", url:"https://twitter.com/share", class:"twitter-share-button" %>
+
+<a href="https://twitter.com/share" data-text="I just discoverd something new in <%= @tipps.city.name%>: <%= @tipps.name%> #randomizer #barcelona" data-url="www.randomizer.com" data-related="@kind_of_Ruby" <%if @tipps.twitter %> <%=tipps.twitter %> <% end %> class="twitter-share-button" data-lang="en" data-count="none" > Tweet </a>
 
   </h2>
 <% end %>
@@ -30,3 +38,8 @@
 <% end %>
 
 
+<script> App.checkDuplicated();
+
+!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="https://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");
+
+</script>

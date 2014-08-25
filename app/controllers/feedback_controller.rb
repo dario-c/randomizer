@@ -3,12 +3,12 @@ class FeedbackController < ApplicationController
 
   def index
     if params[:search]
+      @alltipps = Tipp.search(params[:search])
       @tipps = Tipp.find_by(name: params[:search])
-
       if @tipps
         @total = @tipps.get_likes.size - @tipps.get_dislikes.size 
       else
-        flash.now[:notice] = "Sorry, we dont seem to have that one"    
+        flash.now[:notice] = "Sorry, we dont seem to have that one."    
       end
     end
   end

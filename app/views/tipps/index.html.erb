@@ -10,10 +10,6 @@
           <h2>  <% if tipp.offer %> Special! <% end %> <%= tipp.name %> </h2> 
       </div>
 
-      <div class='textbox'>
-        <%= tipp.streetname %>
-      </div>
-   
       <% if tipp.comments.count > 0 %>
         <div class='textbox comment'>   
           <%= tipp.random_comment.content %>
@@ -23,7 +19,27 @@
       <% if tipp.website %><div class='textbox'>
         <a href="<%= tipp.website %>"> W W W </a>
       </div>
+      <% end %>
+
+      <% if tipp.website %><div class='textbox'>
+        <a href="https://www.google.com/maps/place/<%= tipp.streetname %>"> <%= tipp.streetname %> </a>
+      </div>
       <% end %> 
+   
+   <a href="https://twitter.com/share" data-text="On my way to: <%= tipp.name%>!! #randomizer #barcelona" data-url="www.randomizer.com" data-related="@kind_of_Ruby" <%if tipp.twitter %> <%=tipp.twitter %> <% end %> class="twitter-share-button" data-lang="en" data-count="none" > Tweet </a>
    
     </article>
   <% end %>
+
+
+
+
+
+
+
+
+<script> App.checkDuplicated();
+
+!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="https://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");
+
+</script>
