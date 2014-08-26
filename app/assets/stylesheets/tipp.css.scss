@@ -1,8 +1,16 @@
 // Place all the styles related to the tipp controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+@font-face {
+        font-family: "NovitoNova";
+        src: url("NovitoNova-Regular.otf") format('opentype');
+        font-family: "junc";
+        src: url("junction-regular.woff") format('woff');
+    }
 
-body {
+
+
+body {  font-family: "junc";
         background-image: url("background.jpeg");
         background-repeat: repeat;
       }
@@ -11,7 +19,7 @@ body, html { height: 100% }
 
 .container-fluid { height: 100%}
 
-.form { border: 1px solid green;
+.form { margin-top: 10%;
         display: inline-block;
         padding: 0;
         // margin: 0 auto;
@@ -20,7 +28,8 @@ body, html { height: 100% }
 
   div{ background-color: #628e9d};
 
-      h1{ background-color: #c3d29f;
+      h1{     font-family: "junc";
+              background-color: #c3d29f;
               width:100%;
               padding:20px;
               margin: 0;
