@@ -1,13 +1,20 @@
+<section class="form col-xs-10 col-xs-offset-1">
+<header>
 <h1>Something to add?</h1>
+</header>
+
+  <div class="formBody">
+
+
 
 <p>Thanks for sharing your Tipps! Feel free to share with the people the reason why you decided to share it. What do you like the most of this place?</p>
 
 <%= form_for @comment do |f|%>
   <%= f.hidden_field :user_id, :value => current_user.id %> 
   <%= f.hidden_field :tipp_id, :value => @tipp.id %><br />
-  <%= f.label :content, "Your message:" %><br />
-  <%= f.text_area :content %><br />
-  <%= f.submit %>
+  <%= f.label :content, "Your message:"%><br />
+  <%= f.text_area :content, :class => "input"  %><br />
+  <%= f.submit "Share it!", class:"input" %>
 <% end %>
 
 <p id="error"> <%= flash[:error] %> </p>

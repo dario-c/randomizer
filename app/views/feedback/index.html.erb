@@ -27,7 +27,7 @@
     <% end %>
 
     <% if @tipps %>
-      <h2> <%= @tipps.name %> (<%= @tipps.points %>) </h2>
+      <h2 class="feedbackTipp"> <%= @tipps.name %> (<%= @tipps.points %>) </h2>
       <div class="col-xs-12">
           <p>What did you think about <%= @tipps.name %>, would you recommend it? </p>
           <p><%= flash[:voted] %></p>

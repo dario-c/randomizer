@@ -15,6 +15,7 @@ body, html { height: 100%;}
 
 .container-fluid { height: 100%}
 
+
 /* ONLY NAVS */
 
 nav { border: 1px dotted grey;
@@ -31,7 +32,7 @@ nav { border: 1px dotted grey;
         text-decoration: none
 }
 
-.form { margin-top: 10%;
+.form { margin-top: 5%;
         // display: inline-block;
         padding: 0;
         text-align: center;
@@ -42,19 +43,20 @@ nav { border: 1px dotted grey;
             background-color: #628e9d;
             margin-top: 0 }
 
-.formBody h2{ font-family: "texgyros";
+.formBody .feedbackTipp { font-family: "texgyros";
               font-size: 2em;
               margin-top: 50px;
               border-top: 1px dotted white;
               border-bottom: 1px dotted white }
-
+.formImage {margin-top: 30px;
+            border: 1px dotted white}
 .votes a{ font-size: 3em;
           text-decoration: none;
           color: white;
            }
 .votes { margin-bottom: 30px }
 
-.input{color:black}
+.input{color:black; margin-bottom: 10px;}
 
 header{ font-size: 2em;
         font-family: "texgyros";
@@ -72,19 +74,17 @@ header{ font-size: 2em;
         color: black}
 
         p { color: white;
-            font-size: 1.5em}
-       
-        
+            }
+
+           
+#taken {  display: none; color: white}
+#taken h2 { color: white; border:0}
+#taken a, .alert a{ color: white;
+           border: 0; 
+           font-weight: bold;
+            font-size: 1.20em}
 
 
-
-
-
-
-
-
-
-#taken {  display: none; }
 
 /* MAIN PAGE ONLY  */
 

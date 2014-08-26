@@ -1,47 +1,48 @@
 <section class="form col-xs-10 col-xs-offset-1">
 <header>
-  <h1>SHARE A TIP</h1>
+  <h1>Share a Tip</h1>
 </header>
 
+  <div class="formBody">
 
 
 <%= form_for @tipp, :html => {multiparts: true} do |f|%>
   <div>
   
   <%= f.label :name %><br />
-  <%= f.text_field :name, :autofocus => true,  :id => "tipp_name" %><br />
+  <%= f.text_field :name, :autofocus => true,  :id => "tipp_name" , :placeholder => "Name of a cool place", :class => "input" %><br />
 
-  <%= f.label :streetname,"Address" %><br />
-  <%= f.text_field :streetname  %><br />
+  <%= f.label :streetname,"Streetname" %><br />
+  <%= f.text_field :streetname, :placeholder => "Street name and number",:class => "input"%><br />
   <%= f.label :website %><br />
-  <%= f.text_field :website, :type => "url" %><br /> 
+  <%= f.text_field :website, :type => "url", :class => "input", :placeholder => "Website or facebook page"%><br /> 
 
-  <%= f.label :twitter %><br />
-  <%= f.text_field :twitter, :placeholder => "twitter name" %><br />
+  <%= f.label :twitter%><br />
+  <%= f.text_field :twitter, :placeholder => "Twitter name of the place",:class => "input"%><br />
   </div>
   <div>
-  <%= f.label "Upload an Image" %><br />
-  <%= f.file_field :image  %><br />
+  <!--<%= f.label "Upload an Image", :class => "formImage" %><br />
+  <%= f.file_field :image  %><br />-->
    
-  <%= f.label :remote_image_url, "or give us a link" %><br />
-  <%= f.text_field :remote_image_url %><br />
+  <%= f.label :remote_image_url, "Image" %><br />
+  <%= f.text_field :remote_image_url, :class => "input", :placeholder => "Url of the Image"  %><br />
   
   <%= f.hidden_field :user_id, :value => current_user.id %> 
   <%= f.hidden_field :city_id, :value => 1 %>
   </div>
-  <%= f.submit "Share it!",:class => 'button' %>
+  <%= f.submit "Share it!",:class => 'button input' %>
 <% end %>
 
-<div id="taken">
+<div id="taken" class="alert">
 <h2> Someone already gave us that tip</h2>
 Would you like to <%= link_to "add a comment", :controller => "comments", :action => "new", :tipp_id => ""  %>?
 </div>
 
 
 
-<h2 id="error"><%= flash[:error] %></h2>
-<h2 id="error"><%= flash[:taken] %></h2>
-<h2 id="error"><%= flash[:addcomment] %></h2>
+<h2 id="error" class="alert"><%= flash[:error] %></h2>
+<h2 id="error" class="alert"><%= flash[:taken] %></h2>
+<h2 id="error" class="alert"><%= flash[:addcomment] %></h2>
 
 <% if flash[:notice]%>
 <h2 id="error"><%= flash[:notice] %></h2>
@@ -49,7 +50,7 @@ Would you like to share more Tipps?
 <% end %>
 
 <% if flash[:taken]%>
-<h2> Someone already gave us that tip</h2>
+<h2 class="links"> Someone already gave us that tip</h2>
 Would you like to <%= link_to "add a comment", {:controller => "comments", :action => "new", :tipp_id => "#{flash[:tipp]}"}%>?
 <% end %>
 
@@ -58,6 +59,8 @@ Would you like to <%= link_to "add a comment", {:controller => "comments", :acti
 Would you like to <%= link_to "add a comment", {:controller => "comments", :action => "new", :tipp_id => "#{flash[:tipp]}"}%> to it?
 <% end %>
 
+
+</div>
 </section>
 <script> 
   App.checkDuplicated()
