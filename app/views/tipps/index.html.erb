@@ -1,40 +1,41 @@
 <h1>Welcome to the randomizer:</h1>
 
 
-
   <% @random_choices.each do |tipp| %>
-
-    <article style="background-image: url(<%= tipp.image_url if tipp.image? %><%= tipp.remote_image_url if tipp.image? %>)">
+    <article class="row" style="background-image: url(<%= tipp.image_url if tipp.image? %><%= tipp.remote_image_url if tipp.image? %>)">
      
-      <div class='textbox'>
+      <div class='textbox name col-xs-12'>
           <h2>  <% if tipp.offer %> Special! <% end %> <%= tipp.name %> </h2> 
       </div>
-
-      <% if tipp.comments.count > 0 %>
-        <div class='textbox comment'>   
-          <%= tipp.random_comment.content %>
-        </div>
-      <% end %>
       
-      <% if tipp.website %><div class='textbox'>
-        <a href="<%= tipp.website %>"> W W W </a>
+        <% if tipp.comments.count > 0 %>
+      <div class='textbox comment col-xs-12'>   
+          <%= tipp.random_comment.content %>
       </div>
-      <% end %>
+        <% end %>
 
-      <% if tipp.website %><div class='textbox'>
-        <a href="https://www.google.com/maps/place/<%= tipp.streetname %>"> <%= tipp.streetname %> </a>
-      </div>
-      <% end %> 
-   
-   <a href="https://twitter.com/share" data-text="On my way to: <%= tipp.name%>!! #randomizer #barcelona" data-url="www.randomizer.com" data-related="@kind_of_Ruby" <%if tipp.twitter %>data-via="<%=tipp.twitter %><% end %>" class="twitter-share-button" data-lang="en" data-count="none" > Tweet </a>
-   
+      <div class="bottom col-xs-12">
+
+          <% if tipp.website %>
+        <div class='textbox col-xs-4'>
+          <a href="<%= tipp.website %>"> W W W </a>
+        </div>
+          <% end %>
+
+          <% if tipp.website %>
+        <div class='textbox col-xs-4'>
+          <a href="https://www.google.com/maps/place/<%= tipp.streetname %>"> <%= tipp.streetname %> </a>
+        </div>
+          <% end %>
+
+        <div class="col-xs-4">
+          <a href="https://twitter.com/share" data-text="On my way to: <%= tipp.name%>!! #randomizer #barcelona" data-url="www.randomizer.com" data-related="@kind_of_Ruby" <%if tipp.twitter %>data-via="<%=tipp.twitter %><% end %>" class="twitter-share-button" data-lang="en" data-count="none" > Tweet </a>
+        </div>
+      </div>  
+
+
     </article>
   <% end %>
-
-
-
-
-
 
 
 

@@ -2,46 +2,72 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
+body {
+        background-image: url("background.jpeg");
+        background-repeat: repeat;
+      }
+
+body, html { height: 100% }
+
+.container-fluid { height: 100%}
+
+.form { border: 1px solid green;
+        display: inline-block;
+        padding: 0;
+        // margin: 0 auto;
+        text-align: center;
+        color:white;
+
+  div{ background-color: #628e9d};
+
+      h1{ background-color: #c3d29f;
+              width:100%;
+              padding:20px;
+              margin: 0;
+              }}
+
+
+
+
+
 nav { border: 1px dotted grey;
-  
+      color: black;}
   ul {
-  
     li {  list-style-type:none;
             text-decoration: none;
             display:inline-block;
             margin-left: 50px;
+    }}
 
-    }
-  }
   .sign { 
           float:right;
   }
-        
-}
 
 
 #taken { 
           display: none; }
 
 
-article { border: 1px dotted grey;
-          margin: 20px 0;
-          padding: 5px;
-          background-size: 100% auto;
-          height: 300px;
+article { position: relative;
+          border: 1px dotted grey;
+          min-height: 100%;
+          background-size: cover;
+          height: 100%;
           font-size: 1.5em;
 
-  .textbox { background-color: white;
+
+
+  .textbox { background-color: black;
              display: inline-block;
-             margin-bottom: 30px;
-             float: left; 
-             clear: both;
-            
-
-    .comment { float: right };
-
-    a { text-decoration :none;
-        color: black };
-  }
-}
+             color: white;
+  }}
   
+ .bottom {font-size: 1.5em; 
+          border: 1px solid white;
+          color:red;
+          position: absolute;
+          bottom: 10px; }
+
+  article a { text-decoration :none;
+      color:white;
+    }

@@ -1,4 +1,9 @@
-<h1>Send us your tipp!</h1>
+<section class="form col-xs-10 col-xs-offset-1">
+<header>
+  <h1>Send us your tipp!</h1>
+</header>
+
+
 
 <%= form_for @tipp, :html => {multiparts: true} do |f|%>
   <div>
@@ -53,7 +58,7 @@ Would you like to <%= link_to "add a comment", {:controller => "comments", :acti
 Would you like to <%= link_to "add a comment", {:controller => "comments", :action => "new", :tipp_id => "#{flash[:tipp]}"}%> to it?
 <% end %>
 
-
+</section>
 <script> 
   App.checkDuplicated()
 </script>

@@ -5,9 +5,14 @@
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
+  <meta name="viewport" content="width=device-width, user-scalable=no">
 </head>
 <body>
-  <nav>
+
+<div class="container-fluid">
+
+
+  <nav class= col-xs-12>
     <ul>
       <li><%= link_to('home', tipps_path) %></li>
       
@@ -35,9 +40,11 @@
       </span>
     </ul>
     
-  </nav>
+  </nav>  
 
 <%= yield %>
 
+
+</div>
 </body>
 </html>
