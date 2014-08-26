@@ -11,10 +11,13 @@
 
 body {  background-image: url("background.jpeg");
         background-repeat: repeat; }
-body, html { height: 100%;}
+body, html { font-family: "texgyros"; height: 100%;}
 
 .container-fluid { height: 100%}
 
+main{ text-align: center;
+      h1{ font-size: 5em };
+      h2{ font-size: 4em } };
 
 /* ONLY NAVS */
 
