@@ -12,16 +12,15 @@
 <div class="container-fluid">
 
 
-  <nav class= col-xs-12>
-    <ul>
-      <li><%= link_to('home', tipps_path) %></li>
+  <nav>
+    <ul class="row">
+      <li class="col-xs-12"><%= link_to('home', tipps_path) %></li>
       
-      <li><%= link_to('Feedback', feedback_index_path, :method => :get) %></li> 
-      <li><%= link_to('new', new_tipp_path, :method => :get) %></li> 
-  
+      <li class="col-xs-12"><%= link_to('Feedback', feedback_index_path, :method => :get) %></li> 
+      
+      <li class="col-xs-12"><%= link_to('new', new_tipp_path, :method => :get) %></li>  
 
-    <span class="sign">  
-      <li>
+      <li class="col-xs-12">
         <% if current_user %>
       Hello <%= current_user.name.capitalize %>, you are signed in
         <% else %>
@@ -30,14 +29,12 @@
       </li>
       
         <% if user_signed_in? %>
-        <li> <%= link_to('Logout', destroy_user_session_path, :method => :delete) %> </li>
+      <li class="col-xs-12"> <%= link_to('Logout', destroy_user_session_path, :method => :delete) %> </li>
         
         <% else %>
-          <li> <%= link_to('Sign in', new_user_session_path) %> </li>
-          <li> <%= link_to('Sign up', new_user_registration_path) %> </li>
+      <li class="col-xs-12"> <%= link_to('Sign in', new_user_session_path) %> </li>
+      <li class="col-xs-12"> <%= link_to('Sign up', new_user_registration_path) %> </li>
         <% end %>
-      
-      </span>
     </ul>
     
   </nav>  

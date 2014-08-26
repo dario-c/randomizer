@@ -1,44 +1,55 @@
 
-<h1> Search for an Tipp to give feedback: </h1>
+<section class="form col-xs-10 col-xs-offset-1">
+  <header> <h1> Give feedback </h1>  </header>
+
+  <div class="formBody">
+
+    <% unless @tipps %>
+      <p> Write the name of a place you want to review</p>
+      
+      <%= form_tag(feedback_index_path, :method => "get") do %>
+      <%= text_field_tag :search, params[:search], placeholder: "Search Tipps", :class => "input" %>
+      <%= submit_tag "Search", :name => nil, :class => "input" %>
+      <% end %>
 
 
-<%= form_tag(feedback_index_path, :method => "get") do %>
-  <%= text_field_tag :search, params[:search], placeholder: "Search Tipps" %>
-  <%= submit_tag "Search", :name => nil %>
-<% end %>
-
-<% if flash[:notice] && @alltipps %>
-  <%= flash[:notice] %> 
-    
-
-    Do you mean...
-    <% @alltipps.each do |x| %>
-    <%=  x.name %>
+      <% if flash[:notice] && @alltipps %>
+        <p>  <%= flash[:notice] %> <% if @alltipps.size >0 %>
+        Do you mean...
+        <% end %> </p>
+        <p> 
+        <% @alltipps.each do |x| %>
+        <%=  x.name %>?
+      <% end %>
+        </p>
     <% end %>
 
-<% end %>
+    <% end %>
 
+    <% if @tipps %>
+      <h2> <%= @tipps.name %> (<%= @tipps.points %>) </h2>
+      <div class="col-xs-12">
+          <p>What did you think about <%= @tipps.name %>, would you recommend it? </p>
+          <p><%= flash[:voted] %></p>
+      </div>
+      <div class="votes">
+        <%= link_to "Up", feedback_new_path(vote: "up",tipp: @tipps.id), :method => "post", :class => "col-xs-6 button" %>
+                  
+        <%= link_to "Down", feedback_new_path(vote: "down",tipp:@tipps.id), :method => "post", :class => "col-xs-6 button"%>
+      <span class="row twitt-container">
 
-<% if @tipps%>
-  <h2>
-  <%= @tipps.name %> <%= @tipps.points %>
-<%= button_to "Up", feedback_new_path(vote: "up",tipp:@tipps.id), :method => "post" %>
-<%= button_to "Down", feedback_new_path(vote: "down",tipp:@tipps.id), :method => "post" %>
+        <p> Share your love: <br />
+        <a href="https://twitter.com/share" data-size="large" data-text="I just discoverd something new in <%= @tipps.city.name%>: <%= @tipps.name%> #randomizer #barcelona" data-url="www.randomizer.com" data-related="@kind_of_Ruby" <%if @tipps.twitter %> <%=@tipps.twitter %> <% end %> class="twitter-share-button" data-lang="en" data-count="none"> Tweet </a></p>
+      </span>
+      </div>              
+    <% end %>
 
-<a href="https://twitter.com/share" data-text="I just discoverd something new in <%= @tipps.city.name%>: <%= @tipps.name%> #randomizer #barcelona" data-url="www.randomizer.com" data-related="@kind_of_Ruby" <%if @tipps.twitter %> <%=@tipps.twitter %> <% end %> class="twitter-share-button" data-lang="en" data-count="none" > Tweet </a>
+  
+               
+  </div>
+</section>
 
-  </h2>
-<% end %>
-
-
-<%= flash[:voted] %>
-
-<% if @stuff%>
-  <%= @stuff %>
-<% end %>
-
-
-<script> App.checkDuplicated();
+<script type='text/javascript'> 
 
 !function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="https://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");
 
