@@ -33,9 +33,9 @@
           <p><%= flash[:voted] %></p>
       </div>
       <div class="votes">
-        <%= link_to "Up", feedback_new_path(vote: "up",tipp: @tipps.id), :method => "post", :class => "col-xs-6 button" %>
+        <%= link_to "yes", feedback_new_path(vote: "up",tipp: @tipps.id), :method => "post", :class => "col-xs-12 col-sm-6 button" %>
                   
-        <%= link_to "Down", feedback_new_path(vote: "down",tipp:@tipps.id), :method => "post", :class => "col-xs-6 button"%>
+        <%= link_to "no", feedback_new_path(vote: "down",tipp:@tipps.id), :method => "post", :class => "col-xs-12 col-sm-6 button"%>
       <span class="row twitt-container">
 
         <p> Share your love: <br />

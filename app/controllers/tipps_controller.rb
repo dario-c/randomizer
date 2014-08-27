@@ -2,7 +2,7 @@ class TippsController < ApplicationController
 skip_before_filter :authenticate_user!, :only => [:index]
 
   def index    
-    cookies.delete :choices
+    # cookies.delete :choices
     unless cookies[:choices]
       todays_choices =  Tipp.random_five(user_signed_in?)
       cookies[:choices] = { value: JSON.generate(todays_choices), expires: 24.hours.from_now }
