@@ -23,8 +23,14 @@ main{ text-align: center;
 
 nav { border: 1px dotted grey;
       color: black;
+
+      a{ text-decoration: none };
+
   ul {  padding:0;
-    li {  text-align: center;
+        font-size: 2em;
+        font-weight: bold;
+    li {  
+          text-align: center;
           list-style-type:none;
           text-decoration: none;
     }}}
@@ -41,7 +47,8 @@ nav { border: 1px dotted grey;
         text-align: center;
         color:white;}
 
-.formBody { padding: 12px;
+.formBody { font-size:1.5em;
+            padding: 12px;
             color:white;
             background-color: #628e9d;
             margin-top: 0 }

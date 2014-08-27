@@ -13,7 +13,7 @@ class Tipp < ActiveRecord::Base
   acts_as_votable
 
   def self.search(query)
-    where("name like ?", "%#{query}%") 
+    where("name ilike ?", "%#{query}%") 
   end
 
   
