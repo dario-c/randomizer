@@ -53,3 +53,5 @@ group :test do
   gem 'guard-rspec' 
   gem 'launchy' 
 end
+
+gem 'rails_12factor', group: :production

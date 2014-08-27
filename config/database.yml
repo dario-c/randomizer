@@ -81,5 +81,5 @@ test:
 production:
   <<: *default
   database: Randomizer_production
-  username: Randomizer
+  # username: Randomizer
   password: <%= ENV['RANDOMIZER_DATABASE_PASSWORD'] %>
