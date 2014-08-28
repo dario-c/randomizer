@@ -26,11 +26,11 @@
 
 
       <div class='textbox tippName col-xs-12' >
-          <h2>  <% if tipp.offer %> Special! <% end %> <%= tipp.name %> </h2> 
+          <h2>  <% if tipp.offer %> #Special#<% end %> <%= tipp.name %> </h2> 
  
      <% if tipp.comments.count > 0 %>
-   <div class='textbox comment col-xs-12'>  <span class="bold"> 
-       <%= tipp.random_comment.user.name.capitalize %> says " </span> <%= tipp.random_comment.content %>  <span class="bold"> " </span>
+   <div class='textbox comment col-xs-12'> 
+       "<%= tipp.random_comment.content %>" (<%= tipp.random_comment.user.name.capitalize %>) 
    </div>
      <% end %>
       </div>
@@ -45,7 +45,7 @@
 
           <% if tipp.streetname %>
         <div class='col-xs-12 col-sm-6'>
-          <a href="https://www.google.com/maps/place/<%= tipp.streetname %>"> <%= tipp.streetname %>, <%= tipp.city.name.capitalize %> </a>
+          <a href="https://www.google.com/maps/place/<%= tipp.streetname %>+<%= tipp.city.name%>"> <%= tipp.streetname %>, <%= tipp.city.name.capitalize %> </a>
         </div>
           <% end %>
 

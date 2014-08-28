@@ -16,18 +16,19 @@
     
       <div class="col-xs-12 col-sm-2">
 
-        <div class="button"><%= link_to('home', tipps_path) %></div> 
+        <div class="button"><%= link_to('randomize', tipps_path) %></div> 
 
       </div>
       
       <div class="col-xs-12 col-sm-2">
 
-        <div class="button"><%= link_to('Feedback', feedback_index_path, :method => :get) %></div>  
+        <div class="button"><%= link_to('share', new_tipp_path, :method => :get) %></div>
+
       </div> 
       
       <div class="col-xs-12 col-sm-2">
 
-        <div class="button"><%= link_to('new', new_tipp_path, :method => :get) %></div>
+        <div class="button"><%= link_to('feedback', feedback_index_path, :method => :get) %></div>  
 
       </div>  
 

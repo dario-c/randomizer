@@ -55,7 +55,7 @@ Would you like to <%= link_to "add a comment", {:controller => "comments", :acti
 <% end %>
 
 <% if flash[:addcomment]%>
-<h2> Your tipp has been added!</h2>
+<h2 class="links"> Your tipp has been added!</h2>
 Would you like to <%= link_to "add a comment", {:controller => "comments", :action => "new", :tipp_id => "#{flash[:tipp]}"}%> to it?
 <% end %>
 
