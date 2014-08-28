@@ -9,10 +9,19 @@ class User < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable
   acts_as_voter
 
+
+
+  def update_status(action)
+
+    update_karma(action)
+    update_role
+
+  end
+
+
+
   def update_karma(action)
     add_ammount = 0
-     
-
     unless self.role == "badkarma"
       add_ammount = case action
         when "commented", "was_upvoted" then

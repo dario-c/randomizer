@@ -56,20 +56,4 @@ RSpec.describe CommentsController, :type => :controller do
       expect(Comment.last.user_id).to eq(@user.id)
     end
   end
-
-  describe "when creating an Incorrect Comment..." do 
-    
-    before(:each) do 
-      @user = FactoryGirl.create(:user)
-      @tipp = FactoryGirl.create(:tipp, user: @user)
-      # sign_in @user   
-    end
-  pending "Notifies about error and redirects accordinly" do
-    sign_in @user 
-    post :create, comment: { content:"a", user: @user, tipp: @tipp }
-
-
-      expect(response).to redirect_to(new_tipp_path)         
-    end
-  end
 end

@@ -15,8 +15,8 @@ class CommentsController < ApplicationController
 
     if @comment.save
       @tipp.update_points("commented", user.role)
-      user.update_karma("commented")
-      tipp_owner.update_karma("vouched_for")
+      user.update_status("commented")
+      tipp_owner.update_status("vouched_for")
 
       redirect_to new_tipp_path, :flash => { :notice => "Thanks for your Comment!"}
     else
