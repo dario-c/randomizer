@@ -5,7 +5,9 @@ RSpec.describe Tipp, :type => :model do
   describe "A valid Tipp..." do
 
     before(:each) do 
-      @tipp = FactoryGirl.build(:tipp)
+      @city = FactoryGirl.create(:city)
+      @user = FactoryGirl.create(:user)
+      @tipp = FactoryGirl.build(:tipp, city: @city, user: @user)
     end
 
     it "Has a valid factory" do
@@ -28,12 +30,16 @@ RSpec.describe Tipp, :type => :model do
       expect(@tipp.streetname).to be_truthy
     end
 
-    it "belongs to a City" do 
-      expect(@tipp.city_id).to eq(1)
+    it "belongs to a specific City" do
+      wrong_city = FactoryGirl.create(:city)
+      expect(@tipp.city).to_not eq(wrong_city)
+      expect(@tipp.city).to eq(@city)
     end
 
-    it "belongs to a User" do 
-      expect(@tipp.user_id).to eq(1)
+    it "belongs to a specific User" do 
+      wrong_user = FactoryGirl.create(:user)
+      expect(@tipp.user).to eq(@user)
+      expect(@tipp.user).to_not eq(wrong_user)
     end
 
     it "starts with 0 Points" do
@@ -68,13 +74,13 @@ RSpec.describe Tipp, :type => :model do
     end    
 
     it "does not belong to any city" do
-      tipp = FactoryGirl.build(:tipp, city_id:nil)
+      tipp = FactoryGirl.build(:tipp, city:nil)
 
       expect(tipp).to be_invalid
     end
 
     it "does not belong to any user" do
-      tipp = FactoryGirl.build(:tipp, user_id:nil)
+      tipp = FactoryGirl.build(:tipp, user:nil)
 
       expect(tipp).to be_invalid
     end
@@ -118,17 +124,17 @@ RSpec.describe Tipp, :type => :model do
   describe "find_these Method" do
 
     it "finds those tipps that are asked for" do
-      one = FactoryGirl.create(:tipp, id: 1)
-      two = FactoryGirl.create(:tipp, id: 2)
-      three = FactoryGirl.create(:tipp, id: 20)
+      one = FactoryGirl.create(:tipp)
+      two = FactoryGirl.create(:tipp)
+      three = FactoryGirl.create(:tipp)
 
-      method = Tipp.find_these([1,3])[0]
-      method2 = Tipp.find_these([1,20])[1]
-      no_method = Tipp.find(1)
-      no_method2 = Tipp.find(20)
+      method = Tipp.find_these([one,three])[0]
+      method_again = Tipp.find_these([one,two])[1]
+      no_method = Tipp.find(one)
+      no_method_again = Tipp.find(two)
 
-      expect(method.id).to eq(no_method.id)
-      expect(method2.id).to eq(no_method2.id)
+      expect(method).to eq(no_method)
+      expect(method_again).to eq(no_method_again)
     end
   end
 
@@ -138,7 +144,7 @@ RSpec.describe Tipp, :type => :model do
     
       before(:each) do 
         @user = FactoryGirl.create(:user, role: "regular")
-        @tipp = FactoryGirl.create(:tipp, user_id: @user.id)
+        @tipp = FactoryGirl.create(:tipp, user: @user)
       end
 
       it "he creates Tipps with 10 Points " do
@@ -171,7 +177,7 @@ RSpec.describe Tipp, :type => :model do
 
       before(:each) do 
         @user = FactoryGirl.create(:user, role: "ambassador")
-        @tipp = FactoryGirl.create(:tipp, user_id: @user.id)
+        @tipp = FactoryGirl.create(:tipp, user: @user)
       end
 
       it "he creates Tipps with 100 Points " do
@@ -206,7 +212,7 @@ RSpec.describe Tipp, :type => :model do
 
       before(:each) do 
         @user = FactoryGirl.create(:user, role: "badkarma")
-        @tipp = FactoryGirl.create(:tipp, user_id: @user.id)
+        @tipp = FactoryGirl.create(:tipp, user: @user)
       end
 
       it "he creates Tipps with NO Points " do
@@ -222,7 +228,7 @@ RSpec.describe Tipp, :type => :model do
         expect(@tipp.points - pre_update).to eq(0)
       end
 
-       it "he adds NO Points when up voting" do
+      it "he adds NO Points when up voting" do
          pre_update = @tipp.points
          @tipp.update_points("was_upvoted", @user.role)
          
@@ -234,17 +240,8 @@ RSpec.describe Tipp, :type => :model do
         @tipp.update_points("was_downvoted", @user.role)
         
         expect(@tipp.points - pre_update).to eq(0)
-                
       end
-
-      
     end
-
-
   end
-
-  describe "W" do
-    
-  end
-
 end
+
