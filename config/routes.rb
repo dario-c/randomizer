@@ -3,9 +3,9 @@ Rails.application.routes.draw do
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
-  resources :tipps
+  resources :tipps, only: [:index, :new, :create, :check]
   resources :comments, only: [:new, :create]
-  resources :feedback
+  resources :feedback, only: [:index, :vote]
   post 'feedback/new' => 'feedback#vote'
   post 'tipps/check' => 'tipps#check'
   # You can have the root of your site routed with "root"
