@@ -4,19 +4,24 @@ RSpec.describe Comment, :type => :model do
   describe "A valid comment" do
     
     before(:each) do 
-    @comment = FactoryGirl.build(:comment)
+      @user = FactoryGirl.create(:user)
+      @tipp = FactoryGirl.create(:tipp, user: @user)
+      @comment = FactoryGirl.build(:comment, user: @user, tipp: @tipp)
     end
 
     it "Has a valid factory" do 
       expect(@comment).to be_valid
     end
     
-    it "Belongs to a user" do
-      expect(@comment.user_id).to eq(1)
+    it "Belongs just to a user" do
+      comment_user = @comment.user
+      bad_user = FactoryGirl.create :user
+      expect(comment_user).to_not eq bad_user
+      expect(comment_user).to eq(@user)
     end
 
-    it "Belongs to a tipp" do
-      expect(@comment.tipp_id).to eq(1)
+    it "Belongs just to a tipp" do
+      expect(@comment.tipp).to eq(@tipp)
     end
   end
 
@@ -28,22 +33,4 @@ RSpec.describe Comment, :type => :model do
       expect(comment).to be_invalid
     end
   end
-
-  describe "A Comment is deleted when..." do
-    
-    it "is not related to a user" do
-      comment = FactoryGirl.build(:comment, user_id: nil)
-
-      expect(Comment.find_by(id: comment.id)).to be_falsy
-
-    end
-  
-    it "is not related to a tipp" do
-        comment = FactoryGirl.build(:comment, tipp_id: nil)
-
-        expect(Comment.find_by(id: comment.id)).to be_falsy
-      end
-    
-  end
-
 end

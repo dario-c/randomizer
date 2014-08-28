@@ -3,7 +3,7 @@
 FactoryGirl.define do
   factory :comment do
     content "Awesome Place. Try the tacos!"
-    user_id 1
-    tipp_id 1
+    user
+    tipp
   end
 end
