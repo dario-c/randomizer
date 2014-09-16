@@ -8,6 +8,6 @@ class Comment < ActiveRecord::Base
   private
 
   def self.random_comment(tipp)
-    Comment.where(tipp_id: tipp).sample
+    Comment.where(tipp: tipp).sample
   end
 end

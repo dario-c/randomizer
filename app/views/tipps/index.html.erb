@@ -1,58 +1,45 @@
 
-    <main class="Row" >
-      
+    <main class="Row" >    
       <div class="title">
-      <h1>Welcome to The Randomizer</h1>
-
-      
-        <h2> 
-              Discover 5 places in your city every day!
-      </h2>
-
-        <h2> 
-           
-      </h2>
-        <h2 class="endslogan"> 
-              ... and share your own discoveries with others
-      </h2>
- 
+        <h1>Welcome to The Randomizer</h1>
+        <h2> Discover 5 places in your city every day </h2>
+        <h2 class="endslogan"> ... and share your own discoveries with others</h2>
       </div>
     </main>
 
 
-  <% @random_choices.each do |tipp| %>
+    <% @random_choices.each do |tipp| %>
     <article class="row" style="background-image: url(<%= tipp.image_url if tipp.image? %><%= tipp.remote_image_url if tipp.image? %>)">
-     
-
 
       <div class='textbox tippName col-xs-12' >
-          <h2>  <% if tipp.offer %> # Special #<% end %> <%= tipp.name.capitalize %> </h2> 
+        <h2>  <% if tipp.offer %> # Special #<% end %> <%= tipp.name.capitalize %> </h2> 
  
-     <% if tipp.comments.count > 0 %>
-   <div class='textbox comment col-xs-12'> 
-       "<%= tipp.random_comment.content %>" (<%= tipp.random_comment.user.name.capitalize %>) 
-   </div>
-     <% end %>
+        <% if tipp.comments.count > 0 %>
+        
+        <div class='textbox comment col-xs-12'> 
+          <% comment = tipp.random_comment %>"
+          <%= comment.content %> " (<%= comment.user.name.capitalize %>)
+        </div>
+        <% end %>
       </div>
 
       <div class="bottom col-xs-12">
-        
         <div class='col-xs-12 col-sm-3'>
           <% if tipp.website %>
           <a href="<%= tipp.website %>"> Website </a>
           <% end %>
         </div>
 
-          <% if tipp.streetname %>
+        <% if tipp.streetname %>
         <div class='col-xs-12 col-sm-6'>
           <a href="https://www.google.com/maps/place/<%= tipp.streetname %>+<%= tipp.city.name%>"> <%= tipp.streetname %>, <%= tipp.city.name.capitalize %> </a>
         </div>
-          <% end %>
+        <% end %>
 
         <div class="col-xs-12 col-sm-2 indexTwitt">
-          <a href="https://twitter.com/share" data-size="large"  data-text="On my way to: <%= tipp.name%>!! #randomizer #barcelona" data-url="www.randomizer.com" data-related="@kind_of_Ruby" <%if tipp.twitter %>data-via="<%=tipp.twitter %><% end %>" class="twitter-share-button" data-lang="en" data-count="none" > Tweet </a>
+          <a href="https://twitter.com/share" data-size="large"  data-text="On my way to: <%= tipp.name%>!! #randomizer #barcelona" data-url="www.randomizer.com" data-related="@kind_of_Ruby" <%if tipp.twitter %>data-via="<%=tipp.twitter %><% end %>" class="twitter-share-button" data-lang="en" data-count="none"> Tweet </a>
         </div>
-      </div>  
+      </div>
 
 
     </article>
