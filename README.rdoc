@@ -1,40 +1,10 @@
-<h1>welcome to The Randomizer</h1>
-
-<h2>A platform to share recommendations with other locals and rediscover your city</h2>
-
-<p>The Randomizer was developed during 2 weeks as a final project for the bootcamp <a href="http://www.ironhack.com/en/">IronHack</a>, in Barcelona </p>
-
-<p>The Randomizer allows for people to share their recommendations such as bars, restaurants, museums, clubs and many more. </p>
 
 
+# Welcome to The Randomizer
 
+## A platform to share recommendations with other locals and rediscover your city
 
-<!-- == README
+The Randomizer was developed during 2 weeks as a final project for the bootcamp http://www.ironhack.com/enIronHack, in Barcelona </p>
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+The Randomizer allows for people to share their recommendations such as bars, restaurants, museums, clubs and many more
 
-Things you may want to cover:
-
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
-
-
-Please feel free to use a different markup language if you do not plan to run
-<tt>rake doc:app</tt>.
- -->
