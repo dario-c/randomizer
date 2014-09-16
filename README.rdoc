@@ -1,4 +1,15 @@
-== README
+<h1>welcome to The Randomizer</h1>
+
+<h2>A platform to share recommendations with other locals and rediscover your city</h2>
+
+<p>The Randomizer was developed during 2 weeks as a final project for the bootcamp <a href="http://www.ironhack.com/en/">IronHack</a>, in Barcelona </p>
+
+<p>The Randomizer allows for people to share their recommendations such as bars, restaurants, museums, clubs and many more. </p>
+
+
+
+
+<!-- == README
 
 This README would normally document whatever steps are necessary to get the
 application up and running.
@@ -26,3 +37,4 @@ Things you may want to cover:
 
 Please feel free to use a different markup language if you do not plan to run
 <tt>rake doc:app</tt>.
+ -->
