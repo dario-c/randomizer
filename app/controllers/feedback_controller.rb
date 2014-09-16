@@ -45,7 +45,4 @@ class FeedbackController < ApplicationController
     redirect_to action: 'index', search: voted.name
 
   end
-
-
 end
-
