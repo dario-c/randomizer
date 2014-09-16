@@ -24,18 +24,17 @@ class Tipp < ActiveRecord::Base
   end
 
   def self.find_these(array)
-    Tipp.where({id: array})
+    Tipp.where({ id: array })
   end
 
 
   def update_points(action, role)
     new_ammount = 0
 
-
-    points = { created:  { badkarma: 0, regular: 10, ambassador: 100 },
-              commented: { badkarma: 0, regular: 5, ambassador: 10 },
-              was_upvoted:  { badkarma: 0, regular: 1, ambassador: 1 },
-              was_downvoted: { badkarma: 0, regular: -1, ambassador: -1 }}
+    points = { created:       { badkarma: 0, regular: 10, ambassador: 100 },
+              commented:      { badkarma: 0, regular: 5,  ambassador: 10 },
+              was_upvoted:    { badkarma: 0, regular: 1,  ambassador: 1 },
+              was_downvoted:  { badkarma: 0, regular: -1, ambassador: -1 }}
 
     new_ammount = points[action.to_sym][role.to_sym]
     self.points += new_ammount
@@ -43,14 +42,8 @@ class Tipp < ActiveRecord::Base
   end
 
   def random_comment
-
     Comment.random_comment(self.id)
-
   end
-
-
-
-
 
 end
 

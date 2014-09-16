@@ -3,12 +3,14 @@ skip_before_filter :authenticate_user!, :only => [:index]
 
   def index    
     cookies.delete :choices
+    
     unless cookies[:choices]
       todays_choices =  Tipp.random_five(user_signed_in?)
       cookies[:choices] = { value: JSON.generate(todays_choices), expires: 24.hours.from_now }
     end
+    
     cookie = JSON.parse(cookies[:choices])  
-    @random_choices = Tipp.find_these(cookie) 
+    @random_choices = Tipp.find_these(cookie).shuffle 
   end
 
   def new
@@ -20,13 +22,11 @@ skip_before_filter :authenticate_user!, :only => [:index]
     @tipp = Tipp.new(tipp_params)
             
     if @tipp.save
-
       @user = User.find(@tipp.user_id)
       @user.update_karma("created")
       @tipp.update_points("created", @user.role)
       
       redirect_to new_tipp_path, :flash => {:addcomment => "", :tipp => @tipp.name} 
-    
     else 
       @errors = @tipp.errors.full_messages
       @error = @tipp.errors[:name]
