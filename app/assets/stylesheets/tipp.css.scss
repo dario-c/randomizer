@@ -2,137 +2,172 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 @font-face {
+  font-family: "texgyros";
+  src: url("texgyreheroscn-regular.otf") format('opentype')
+}
 
-        font-family: "texgyros";
-        src: url("texgyreheroscn-regular.otf") format('opentype');
-    };
+body {  
+  background-image: url("background.jpeg");
+  background-repeat: repeat;
+}
 
-body {  background-image: url("background.jpeg");
-        background-repeat: repeat;
-        }
-
-body, html { font-family: "texgyros"; height: 100%;}
+body, html { 
+  font-family: "texgyros"; 
+  height: 100%;
+}
 
 .container-fluid { height: 100%}
 
-
-
-main {  position:relative;
-        text-align: center;
-        min-height: 100%;
-        height:100%;
-        h1{ font-size: 5em };
-        h2{ font-size: 4em }
+main {  
+  position: relative;
+  text-align: center;
+  min-height: 100%;
+  height: 100%;
+  h1{ font-size: 5em };
+  h2{ font-size: 4em }
 }
 
 .endslogan { position: absolute; bottom: 0; right: 0;}
 
-.title{ width: 80%;
-        height: 80%;
-        overflow: auto;
-        margin: auto;
-        position: absolute;
-        top: 0; left: 0; bottom: 0; right: 0;}
+.title { 
+  width: 80%;
+  height: 80%;
+  overflow: auto;
+  margin: auto;
+  position: absolute;
+  top: 0; left: 0; bottom: 0; right: 0;
+}
 
 /* ONLY NAVS */
 
-nav { text-align: center;
-      color: black;
-      font-size: 2em;}
-nav > div{  
-            border: 0px dotted black
-            }
+nav { 
+  text-align: center;
+  color: black;
+  font-size: 2em;
+}
+
+nav > div { border: 0px dotted black}
 
 nav .button { 
-              width: 100%; 
-              margin: 0 auto;
-              text-align: center;
-              border: 4px solid #BADA55;
-              border-radius: 10px;
-              margin-top: 5px;}
+  width: 100%; 
+  margin: 0 auto;
+  text-align: center;
+  border: 4px solid #BADA55;
+  border-radius: 10px;
+  margin-top: 5px;
+}
 
 /* FORMS ONLY */
 
-.links a{color:white;
-        text-decoration: none
+.links a {
+  color: white;
+  text-decoration: none
 }
 
-.form { margin-top: 5%;
-        padding: 0;
-        text-align: center;
-        color:white;}
+.form { 
+  margin-top: 5%;
+  padding: 0;
+  text-align: center;
+  color: white;
+}
 
-header{ font-size: 2em;
-        background-color: #c3d29f;
-        width:100%;
-        padding: 20px;
-        margin: 0}
+header { 
+  font-size: 2em;
+  background-color: #c3d29f;
+  width: 100%;
+  padding: 20px;
+  margin: 0
+}
 
-.formBody { font-size:1.75em;
-            padding: 12px;
-            color:white;
-            background-color: #628e9d;
-            margin-top: 0 }
+.formBody { 
+  font-size: 1.75em;
+  padding: 12px;
+  color: white;
+  background-color: #628e9d;
+  margin-top: 0 
+}
 
-.formBody .feedbackTipp { 
-              font-size: 2em;
-              margin-top: 50px;
-              border-top: 1px dotted white;
-              border-bottom: 1px dotted white }
+.formBody .feedbackTipp {
+  font-size: 2em;
+  margin-top: 50px;
+  border-top: 1px dotted white;
+  border-bottom: 1px dotted white 
+}
 
-.formImage {margin-top: 30px;
-            border: 1px dotted white}
-.votes a{ font-size: 2em;
-          text-decoration: none;
-          color: white;
-           }
+.formImage {
+  margin-top: 30px;
+  border: 1px dotted white
+}
+
+.votes a { 
+  font-size: 2em;
+  text-decoration: none;
+  color: white;
+}
+
 .votes { margin-bottom: 30px }
 
-.votes>.button { border: 1px dotted white} 
+.votes>.button { border: 1px dotted white } 
 
-.input{color:black; margin-bottom: 10px;}
-  
+.input{
+  color: black;
+  margin-bottom: 10px
+}
+             
+#taken { 
+  display: none; 
+  color: white
+}
 
-           
-#taken {  display: none; color: white}
-#taken h2 { color: white; border:0}
-#taken a, .alert a{ color: white;
-           border: 0; 
-           font-weight: bold;
-            font-size: 1.20em}
+#taken h2 { 
+  color: white;
+  border: 0
+}
 
-
+#taken a, .alert a { 
+  color: white;
+  border: 0; 
+  font-weight: bold;
+  font-size: 1.20em
+}
 
 /* MAIN PAGE ONLY  */
 
-article { position: relative;
-          border: 1px dotted grey;
-          min-height: 100%;
-          background-size: cover;
-          height: 100%;
-          font-size: 1.5em;}
+article { 
+  position: relative;
+  border: 1px dotted grey;
+  min-height: 100%;
+  background-size: cover;
+  height: 100%;
+  font-size: 1.5em;
+}
+
 .textbox { 
-            background-color: rgba(0, 0, 0, 0.5);
-            display: inline-block;
-            color: white;}
+  background-color: rgba(0, 0, 0, 0.5);
+  display: inline-block;
+  color: white;
+}
 
-.comment { background-color: rgba(0, 0, 0, 0)}
+.comment { background-color: rgba(0, 0, 0, 0) }
 
-.bold { font-weight: bold;}
+.bold { font-weight: bold }
 
-.tippName{ font-size: 1.5em;}
+.tippName{ font-size: 1.5em }
 
- 
-.bottom { text-align:center;
-          font-family: "texgyros"; 
-          background-color: rgba(0, 0, 0, 0.5);
-          font-size: 1em; 
-          position: absolute;
-          bottom: 0; 
-          }
-.bottom a { font-family: "texgyros";
-            font-size: 2em;
-            color:white;
-            text-decoration :none;}
+.bottom { 
+  text-align: center;
+  font-family: "texgyros"; 
+  background-color: rgba(0, 0, 0, 0.5);
+  font-size: 1em; 
+  position: absolute;
+  bottom: 0
+}
 
-.indexTwitt{ padding:10px }
+.bottom a { 
+  font-family: "texgyros";
+  font-size: 2em;
+  color: white;
+  text-decoration: none
+}
+
+.indexTwitt{ padding: 10px }
